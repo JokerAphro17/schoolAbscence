@@ -16,6 +16,7 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('filiere_id')->constrained('filieres');
+            $table->string('nom');
             $table->timestamps();
         });
     }

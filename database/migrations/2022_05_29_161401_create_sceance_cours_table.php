@@ -17,6 +17,9 @@ class CreateSceanceCoursTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('module_id')->constrained('modules');
             $table->foreignUuid('classe_id')->constrained('classes');
+            $table->foreignUuid('enseignant_id')->constrained('enseignants');
+            $table->integer('duree');
+            $table->string('date');
             $table->timestamps();
         });
     }

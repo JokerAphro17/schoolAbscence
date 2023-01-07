@@ -1,17 +1,19 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use Database\Seeders\UserSeeder;
+namespace Database\Seeders;
 
-class DatabaseSeeder extends Seeder
+use Illuminate\Database\Seeder;
+
+class UserSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
+        
         $users = [
             [
                 'id' => '1',
@@ -19,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 'prenom' => 'admin',
                 'email' => 'admin@gmail.com',
                 'telephone' => '0000000000',
-                'role' => 'admin',
+                'adresse' => 'admin',
                 'password' => bcrypt('admin'),
             ]
         ];

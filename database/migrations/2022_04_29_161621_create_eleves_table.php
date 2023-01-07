@@ -15,6 +15,12 @@ class CreateElevesTable extends Migration
     {
         Schema::create('eleves', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('ine');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('date_naissance');
+            $table->string('lieu_naissance')->nullable();
+            $table->string('sexe');
             $table->foreignUuid('classe_id')->constrained('classes');
             $table->timestamps();
         });
