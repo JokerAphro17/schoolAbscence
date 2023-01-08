@@ -12,4 +12,8 @@ class ModuleClasse extends Model
         "module_id",
         "classe_id",
     ];
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

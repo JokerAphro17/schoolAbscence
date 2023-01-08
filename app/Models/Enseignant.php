@@ -17,4 +17,8 @@ class Enseignant extends Model
         "adresse",
         "telephone",
     ];
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

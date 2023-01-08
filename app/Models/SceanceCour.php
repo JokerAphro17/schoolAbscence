@@ -23,4 +23,8 @@ class SceanceCour extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

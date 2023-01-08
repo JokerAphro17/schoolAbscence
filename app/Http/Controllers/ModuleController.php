@@ -64,7 +64,7 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        return view('modules.edit', ['module' => $module]);
+        return view('modules.form', ['module' => $module]);
     }
 
     /**
@@ -79,7 +79,7 @@ class ModuleController extends Controller
         $input = $request->all();
         $module->update($input);
         $request->session()->flash('success', 'module a été modifié avec succès');
-        return redirect()->route('module.index');
+        return redirect()->route('modules.index');
     }
 
     /**

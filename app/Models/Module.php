@@ -10,6 +10,7 @@ class Module extends Model
 {
     use HasFactory, Uuid;
     protected $fillable =[
+        "id",
         "code",
         "nom",
     ];
@@ -18,4 +19,8 @@ class Module extends Model
     {
         return $this->hasMany(SceanceCour::class);
     }
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

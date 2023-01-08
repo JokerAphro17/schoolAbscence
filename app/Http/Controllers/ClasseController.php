@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classe;
 use App\Http\Requests\StoreClasseRequest;
 use App\Http\Requests\UpdateClasseRequest;
+use App\Models\Filiere;
 
 class ClasseController extends Controller
 {
@@ -15,7 +16,9 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        //
+        $classes = Classe::all();
+
+        return view('classes.index', ['classes' => $classes]);
     }
 
     /**
@@ -25,7 +28,9 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        //
+
+        $filieres = Filiere::all();
+        return view('classes.form', ['filieres'=> $filieres]);
     }
 
     /**
@@ -36,7 +41,11 @@ class ClasseController extends Controller
      */
     public function store(StoreClasseRequest $request)
     {
-        //
+        $input = $request->all();
+
+        Classe::create($input);
+        $request->session()->flash('success', 'Classe created successfully.');
+        return redirect()->route('classes.index');
     }
 
     /**
@@ -47,7 +56,7 @@ class ClasseController extends Controller
      */
     public function show(Classe $classe)
     {
-        //
+        return view('classes.show', ['classe' => $classe]);
     }
 
     /**
@@ -58,7 +67,7 @@ class ClasseController extends Controller
      */
     public function edit(Classe $classe)
     {
-        //
+        return view('classes.form', ['classe' => $classe]);
     }
 
     /**
@@ -70,7 +79,10 @@ class ClasseController extends Controller
      */
     public function update(UpdateClasseRequest $request, Classe $classe)
     {
-        //
+        $input = $request->all();
+        $classe->update($input);
+        $request->session()->flash('success', 'La Classe a été modifié avec succès');
+        return redirect()->route('classes.index');
     }
 
     /**
@@ -81,6 +93,8 @@ class ClasseController extends Controller
      */
     public function destroy(Classe $classe)
     {
-        //
+        $classe->delete();
+
+        return redirect()->route('classes.index')->with('success', 'Classe a été supprimé avec succès');
     }
 }

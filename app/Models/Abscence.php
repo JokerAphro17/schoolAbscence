@@ -21,4 +21,8 @@ class Abscence extends Model
     {
         //
     }
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

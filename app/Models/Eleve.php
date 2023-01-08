@@ -24,4 +24,8 @@ class Eleve extends Model
     {
         return $this->hasMany(Abscence::class);
     }
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

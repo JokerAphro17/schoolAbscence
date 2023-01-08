@@ -13,4 +13,12 @@ class Classe extends Model
         "nom",
         "filiere_id",
     ];
+
+    protected $casts = [
+        'id' => 'string',
+    ];
+
+    public function filiere(){
+        return $this->belongsTo(Filiere::class);
+    }
 }

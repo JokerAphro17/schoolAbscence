@@ -53,7 +53,6 @@ class FiliereController extends Controller
      */
     public function show(Filiere $filiere)
     {
-
         return view('filieres.show', ['filiere' => $filiere]);
     }
 

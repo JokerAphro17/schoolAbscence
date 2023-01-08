@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Abscence;
 use App\Http\Requests\StoreAbscenceRequest;
 use App\Http\Requests\UpdateAbscenceRequest;
+use App\Models\Classe;
 
 class AbscenceController extends Controller
 {
@@ -15,6 +16,9 @@ class AbscenceController extends Controller
      */
     public function index()
     {
+        $abscences = Abscence::all();
+
+        return view('abscences.index', ['abscences' => $abscences]);
     }
 
     /**
@@ -24,7 +28,7 @@ class AbscenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('abscences.form');
     }
 
     /**
@@ -35,7 +39,11 @@ class AbscenceController extends Controller
      */
     public function store(StoreAbscenceRequest $request)
     {
-        //
+        $input = $request->all();
+
+        Abscence::create($input);
+        $request->session()->flash('success', 'Abscence created successfully.');
+        return redirect()->route('abscences.index');
     }
 
     /**
@@ -46,7 +54,7 @@ class AbscenceController extends Controller
      */
     public function show(Abscence $abscence)
     {
-        //
+        return view('abscences.show', ['abscence' => $abscence]);
     }
 
     /**
@@ -57,7 +65,7 @@ class AbscenceController extends Controller
      */
     public function edit(Abscence $abscence)
     {
-        //
+        return view('abscences.form', ['abscence' => $abscence]);
     }
 
     /**
@@ -69,7 +77,10 @@ class AbscenceController extends Controller
      */
     public function update(UpdateAbscenceRequest $request, Abscence $abscence)
     {
-        //
+        $input = $request->all();
+        $abscence->update($input);
+        $request->session()->flash('success', 'Absence a été modifié avec succès');
+        return redirect()->route('abscences.index');
     }
 
     /**
@@ -80,6 +91,8 @@ class AbscenceController extends Controller
      */
     public function destroy(Abscence $abscence)
     {
-        //
+        $abscence->delete();
+
+        return redirect()->route('abscences.index')->with('success', 'Abscence a été supprimé avec succès');
     }
 }

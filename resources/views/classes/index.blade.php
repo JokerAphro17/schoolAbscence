@@ -11,11 +11,11 @@
 				</div>
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
-						<a href="{{route('modules.create')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						<a href="{{route('classes.create')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
 								<i class="fe fe-plus">
                                 </i>
-                                Nouveau Module
+                                Nouveau classe
 							</span>
 						</a>
 					</div>
@@ -29,40 +29,40 @@
 				<div class="col-md-12 col-lg-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Les modules</h3>
+							<h3 class="card-title">Les classes</h3>
 						</div>
 						<div class="card-body">
 						   
-							@if($modules->count() == 0)
+							@if($classes->count() == 0)
 								<h5 class="text-muted text-center">
-									Aucun module trouvé
+									Aucun classe trouvé
 								</h5>
 							@else
 							<div class="table-responsive">
 								<table id="data-table1" class="table table-striped table-bordered text-nowrap w-100">
 									<thead>
 										<tr>
-											<th class="wd-15p">Code du module</th>
-											<th class="wd-15p">Nom du module</th>
+											<th class="wd-15p">Nom du classe</th>
+											<th class="wd-15p">Filiere</th>
 											<th class="wd-15p">Action</th>
 										</tr>
 									</thead>
 									<tbody>
 										
-										@foreach ($modules as $module )
+										@foreach ($classes as $classe )
 										<tr>
 											<td>
 												{{
-													$module->code
+													$classe->nom
 												}}
 											</td>
 											<td>
 												{{
-													$module->nom
+													$classe->filiere->nom
 												}}
 											</td>
 											<td>
-												<a href="{{route('modules.edit', $module)}}" class="btn btn-outline-primary">
+												<a href="{{route('classes.edit', $classe)}}" class="btn btn-outline-primary">
 													<i class="fa fa-edit    
 													"></i> Modifier
 												</a>

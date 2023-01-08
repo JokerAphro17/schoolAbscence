@@ -10,16 +10,14 @@
 					</ol>
 				</div>
 				<div class="ml-auto pageheader-btn">
-					<div class="btn-list">      
-					
-						<a href="{{route('filieres.index')}}" class="btn btn-info btn-icon text-white" data-toggle="tooltip" title="Add User" data-placement="top">
+					<div class="btn-list">
+						<a href="{{route('classes.index')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
 								<i class="fe fe-arrow-left">
                                 </i>
                                 Retour à la liste
 							</span>
 						</a>
-						
 					</div>
 				</div>
 			</div>
@@ -27,15 +25,15 @@
 @endsection
 @section('content')
 			<!-- ROW-1 -->
-            <div class="row">
+			<div class="row">
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                @if(isset($filiere))
-                                    Modifier la filière
+                                @if(isset($classe))
+                                    Modifier la classe
                                 @else
-                                    Nouvelle une filière
+                                    Nouvelle classe
                                 @endif
                             </h3>
                         </div>
@@ -43,14 +41,13 @@
                             <div class="row">
                                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                                     <form 
-                                    @if(isset($filiere))
-                                        action="{{route('filieres.update',$filiere->id)}}"
+                                    @if(isset($classe))
+                                        action="{{route('classes.update',$classe)}}"
                                     @else
-                                        action="{{route('filieres.store')}}"
-                                    @endif
-                                    method="POST">
-
-                                        @if(isset($filiere))
+                                        action="{{route('classes.store')}}"
+                                    @endif 
+                                    method="post">
+                                        @if(isset($module))
                                             @method('PUT')
                                         @endif
                                         @csrf
@@ -58,29 +55,37 @@
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
                                         
                                                 <div class="form-group">
-                                                    <label class="form-label
-                                                        ">Nom de la filière</label>
-                                                    <input type="text" class="form-control"
-                                                    value="{{$filiere->nom ?? old('nom')}}"
-                                                    name="nom" placeholder="Nom de la filière">
+                                                    <label class="form-label">
+														Entrer la Classe
+													</label>
+                                                    <input type="text" class="form-control" 
+                                                    value="{{$classe->nom ?? old('nom')}}"
+                                                     name="nom" placeholder="Renseignez le code du module">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+												<div class="form-group">
+                                                    <label class="form-label">
+														Filiere
+													</label>
+                                                    <select class="select2 form-control custum-select " name="filiere_id">
+                                                        <option value="">...</option>
+                                                        @foreach ($filieres as $filiere )
+                                                            <option value="{{$filiere->id}}">
+                                                                {{$filiere->nom}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group
-                                        ">
-                                            <label class="form-label
-                                            ">Description</label>
-                                            <textarea class="form-control" 
-                                            
-                                            name="description" placeholder="Description de la filière"></textarea>
-                                        </div>
                                         <div class="row justify-content-between">
                                             <div class=" col-md-6 ">
-                                                <button type="submit" class="btn btn-outline-primary">Enregistrer   </button>
+                                                <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
                                             </div>
                                             <div class=" d-flex  justify-content-right ">
                                                 <a
-                                                href="{{route('filieres.index')}}"
+                                                href="{{route('classes.index')}}"
                                                 class="btn btn-outline-danger">Annuler</a>
                                             </div>
                                         </div>
