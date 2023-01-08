@@ -31,14 +31,28 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">
-                                Nouvelle filière
-                            </h3>
+                            <h3 class="card-title
+                            ">
+                                @if(isset($filiere))
+                                    Modifier la filière
+                                @else
+                                    Nouvel une filière
+                                @endif
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
-                                    <form action="{{route('filieres.store')}}" method="post">
+                                    <form 
+                                    @if(isset($filiere))
+                                        action="{{route('filieres.update',$filiere->id)}}"
+                                    @else
+                                        action="{{route('filieres.store')}}"
+                                    @endif
+                                    method="POST">
+
+                                        @if(isset($filiere))
+                                            @method('PUT')
+                                        @endif
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
@@ -46,7 +60,9 @@
                                                 <div class="form-group">
                                                     <label class="form-label
                                                         ">Nom de la filière</label>
-                                                    <input type="text" class="form-control" name="nom" placeholder="Nom de la filière">
+                                                    <input type="text" class="form-control"
+                                                    value="{{$filiere->nom ?? old('nom')}}"
+                                                    name="nom" placeholder="Nom de la filière">
                                                 </div>
                                             </div>
                                         </div>
@@ -54,7 +70,9 @@
                                         ">
                                             <label class="form-label
                                             ">Description</label>
-                                            <textarea class="form-control" name="description" placeholder="Description de la filière"></textarea>
+                                            <textarea class="form-control" 
+                                            
+                                            name="description" placeholder="Description de la filière"></textarea>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class=" col-md-6 ">
