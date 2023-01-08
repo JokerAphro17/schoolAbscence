@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\EleveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('filieres', FiliereController::class);
     Route::resource('modules', ModuleController::class);
-    Route::resource('classes', ClasseController::class);
+    Route::get('classes', [ClasseController::class, 'index'])->name('classes.index');
+    Route::get('classes/create', [ClasseController::class, 'create'])->name('classes.create');
+    Route::post('classes', [ClasseController::class, 'store'])->name('classes.store');
+    Route::get('classes/{classe}', [ClasseController::class, 'show'])->name('classes.show');
+    Route::get('classes/{classe}/edit', [ClasseController::class, 'edit'])->name('classes.edit');
+    Route::put('classes/{classe}', [ClasseController::class, 'update'])->name('classes.update');
+    Route::delete('classes/{classe}', [ClasseController::class, 'destroy'])->name('classes.destroy');
+    Route::get('eleves', [EleveController::class, 'index'])->name('eleves.index');
+    Route::get('eleves/create', [EleveController::class, 'create'])->name('eleves.create');
+    Route::post('eleves', [EleveController::class, 'store'])->name('eleves.store');
+    Route::get('eleves/{eleve}', [EleveController::class, 'show'])->name('eleves.show');
+    Route::get('eleves/{eleve}/edit', [EleveController::class, 'edit'])->name('eleves.edit');
+    Route::put('eleves/{eleve}', [EleveController::class, 'update'])->name('eleves.update');
+    Route::delete('eleves/{eleve}', [EleveController::class, 'destroy'])->name('eleves.destroy');
 });
 
 

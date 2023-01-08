@@ -12,17 +12,28 @@ class Eleve extends Model
 
 
     protected $fillable = [
+        'ine',
         'nom',
         'prenom',
-        'email',
-        'telephone',
-        'adresse',
-        'password',
+        'date_naissance',
+        'lieu_naissance',
+        'sexe',
+        'classe_id',
     ];
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
     // on recupere toutes les absences de l'eleve
     public function Abscences()
     {
         return $this->hasMany(Abscence::class);
+    }
+
+    public function classe()
+    {
+        return $this->belongsTo(Classe::class);
     }
 
     protected $casts = [
