@@ -27,7 +27,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        return view('modules.create');
+        return view('modules.form');
     }
 
     /**
@@ -41,7 +41,7 @@ class ModuleController extends Controller
         $input = $request->all();
 
         Module::create($input);
-
+        $request->session()->flash('success', 'Le module a ete crée avec succès.');
         return redirect()->route('modules.index');
     }
 
@@ -76,7 +76,10 @@ class ModuleController extends Controller
      */
     public function update(UpdateModuleRequest $request, Module $module)
     {
-        //
+        $input = $request->all();
+        $module->update($input);
+        $request->session()->flash('success', 'module a été modifié avec succès');
+        return redirect()->route('module.index');
     }
 
     /**
@@ -89,6 +92,6 @@ class ModuleController extends Controller
     {
         $module->delete();
 
-        return redirect()->route('modules.index');
+        return redirect()->route('modules.index')->with('success', 'module a été supprimé avec succès');
     }
 }
