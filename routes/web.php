@@ -18,6 +18,7 @@ use App\Http\Controllers\FiliereController;
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('filieres', FiliereController::class);
+    Route::resource('modules', ModuleController::class);
 });
 
 
