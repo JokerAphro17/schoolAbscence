@@ -10,4 +10,11 @@ use App\Traits\Uuid;
 class Enseignant extends Model
 {
     use HasFactory, Uuid;
+    protected $fillable = [
+        "nom",
+        "prenom",
+        "email",
+        "adresse",
+        "telephone",
+    ];
 }

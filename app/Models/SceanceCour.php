@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class SceanceCour extends Model
 {
     use HasFactory, Uuid;
+    protected $fillable =[
+        "module_id",
+        "classe_id",
+        "enseignant_id",
+        "duree",
+        "date",
+    ];
 
     // on recupere le module d'une sceance de cours
 

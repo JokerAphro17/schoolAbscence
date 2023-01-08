@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Filiere extends Model
 {
     use HasFactory, Uuid;
+    protected $fillable =[
+        "nom",
+    ];
 }

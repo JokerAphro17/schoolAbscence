@@ -15,7 +15,9 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        //
+        $modules = Module::all();
+
+        return view('modules.index', ['modules' => $modules]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.form');
     }
 
     /**
@@ -36,7 +38,11 @@ class ModuleController extends Controller
      */
     public function store(StoreModuleRequest $request)
     {
-        //
+        $input = $request->all();
+
+        Module::create($input);
+        $request->session()->flash('success', 'Le module a ete crée avec succès.');
+        return redirect()->route('modules.index');
     }
 
     /**
@@ -47,7 +53,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        //
+        return view('modules.show', ['module' => $module]);
     }
 
     /**
@@ -58,7 +64,7 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        //
+        return view('modules.edit', ['module' => $module]);
     }
 
     /**
@@ -70,7 +76,10 @@ class ModuleController extends Controller
      */
     public function update(UpdateModuleRequest $request, Module $module)
     {
-        //
+        $input = $request->all();
+        $module->update($input);
+        $request->session()->flash('success', 'module a été modifié avec succès');
+        return redirect()->route('module.index');
     }
 
     /**
@@ -81,6 +90,8 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
-        //
+        $module->delete();
+
+        return redirect()->route('modules.index')->with('success', 'module a été supprimé avec succès');
     }
 }
