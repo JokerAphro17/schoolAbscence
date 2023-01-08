@@ -237,7 +237,7 @@
 										<a class="dropdown-item" href="#">
 											<i class="dropdown-icon mdi mdi-compass-outline"></i> Need help?
 										</a>
-										<a class="dropdown-item" href="{{url('/' . $page='login')}}">
+										<a class="dropdown-item" href="{{url('logout')}}">
 											<i class="dropdown-icon mdi  mdi-logout-variant"></i> Sign out
 										</a>
 									</div>

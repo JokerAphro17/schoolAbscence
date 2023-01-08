@@ -1,5 +1,6 @@
 		<!-- BACK-TO-TOP -->
 		<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+		<script type="text/javascript" src="{{URL::asset('assets/js/toastify.js')}}"></script>
 
 		<!-- JQUERY JS -->
 		<script src="{{URL::asset('assets/js/jquery-3.4.1.min.js')}}"></script>

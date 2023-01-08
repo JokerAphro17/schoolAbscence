@@ -13,7 +13,7 @@ class UpdateFiliereRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateFiliereRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nom' => 'required|unique:filieres,nom,' . $this->route('filiere')->id,
         ];
     }
 }

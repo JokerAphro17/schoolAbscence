@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FiliereController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('filieres', FiliereController::class);
 });
 
-Route::get('/{page}', 'AdminController@index');
 
+
+require __DIR__ . '/auth.php';
