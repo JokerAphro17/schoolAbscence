@@ -27,7 +27,7 @@ class FiliereController extends Controller
      */
     public function create()
     {
-        return view('filieres.create');
+        return view('filieres.form');
     }
 
     /**
@@ -41,7 +41,7 @@ class FiliereController extends Controller
         $input = $request->all();
 
         Filiere::create($input);
-
+        $request->session()->flash('success', 'Filiere created successfully.');
         return redirect()->route('filieres.index');
     }
 
@@ -66,7 +66,7 @@ class FiliereController extends Controller
     public function edit(Filiere $filiere)
     {
 
-        return view('filieres.edit', ['filiere' => $filiere]);
+        return view('filieres.show', ['filiere' => $filiere]);
     }
 
     /**
@@ -78,6 +78,11 @@ class FiliereController extends Controller
      */
     public function update(UpdateFiliereRequest $request, Filiere $filiere)
     {
+
+        $input = $request->all();
+        $filiere->update($input);
+        $request->session()->flash('success', 'Filiere a été modifié avec succès');
+        return redirect()->route('filieres.index');
     }
 
     /**
@@ -90,6 +95,6 @@ class FiliereController extends Controller
     {
         $filiere->delete();
 
-        return redirect()->route('filieres.index');
+        return redirect()->route('filieres.index')->with('success', 'Filiere a été supprimé avec succès');
     }
 }
