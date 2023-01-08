@@ -26,10 +26,63 @@
 			<!-- PAGE-HEADER END -->
 @endsection
 @section('content')
-			<!-- ROW-1 -->
+				<!-- ROW-1 OPEN -->
+				<div class="row">
+					<div class="col-md-12 col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Les filieres</h3>
+							</div>
+							<div class="card-body">
+                               
+                                @if($filieres->count() == 0)
+                                    <h5 class="text-muted text-center">
+                                        Aucune filiere trouvée
+                                    </h5>
+                                @else
+								<div class="table-responsive">
+									<table id="data-table1" class="table table-striped table-bordered text-nowrap w-100">
+										<thead>
+											<tr>
+												<th class="wd-15p">Nom de la filliere</th>
+                                                <th class="wd-15p">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+                                            
+                                            @foreach ($filieres as $filiere )
+											<tr>
+                                                <td>
+                                                    {{
+                                                        $filiere->nom
+                                                    }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('filieres.edit', $filiere)}}" class="btn btn-outline-primary">
+                                                        <i class="fa fa-edit    
+                                                        "></i> Modifier
+                                                    </a>
+                                                    {{-- <a href="{{route('filieres.destroy', $filiere)}}" class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a> --}}
+                                                </td>
 
-            
-            <!-- ROW-1 CLOSED -->
+												
+											</tr>
+                                                @endforeach
+											
+										</tbody>
+									</table>
+								</div>
+                                @endif
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ROW-3 CLOSED-->
+
+				<!-- ROW-4 -->
+			
 @endsection
 @section('js')
 		<!-- INTERNAL CHARTJS CHART JS -->

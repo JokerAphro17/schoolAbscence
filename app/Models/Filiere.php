@@ -9,7 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Filiere extends Model
 {
     use HasFactory, Uuid;
-    protected $fillable =[
+    protected $fillable = [
         "nom",
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
+    protected $casts = [
+        'id' => 'string',
     ];
 }

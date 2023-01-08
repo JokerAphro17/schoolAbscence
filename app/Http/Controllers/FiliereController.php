@@ -66,7 +66,7 @@ class FiliereController extends Controller
     public function edit(Filiere $filiere)
     {
 
-        return view('filieres.show', ['filiere' => $filiere]);
+        return view('filieres.form', ['filiere' => $filiere]);
     }
 
     /**
