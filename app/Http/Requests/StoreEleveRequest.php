@@ -13,7 +13,7 @@ class StoreEleveRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreEleveRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ine'=> 'required|unique:eleves,ine', 
+            'nom'=> 'required',
+            'prenom' => 'required',
+            'sexe' =>'required',
+            'date_naissance' => 'required',
+            'lieu_naissaance' => 'required',
+            'class_id' => 'required',
         ];
     }
 }

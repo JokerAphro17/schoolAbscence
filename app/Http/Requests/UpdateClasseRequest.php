@@ -13,7 +13,7 @@ class UpdateClasseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateClasseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'filiere_id'=> 'required|unique:classes,filiere_id,'. $this->route('classe')->id,
+            'nom'=> 'required|unique:classes,nom,'. $this->route('classe')->id,
         ];
     }
 }

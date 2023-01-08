@@ -13,7 +13,7 @@ class UpdateEnseignantRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateEnseignantRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nom'=> 'required,'. $this->route('enseignant')->id,
+            'prenom' => 'required,'. $this->route('enseignant')->id,
+            'email'=> 'required|unique:enseignants,ine,'. $this->route('enseignant')->id,
+            'telephone'=> 'required|unique:enseignant,telephone,'. $this->route('enseignant')->id, 
         ];
     }
 }

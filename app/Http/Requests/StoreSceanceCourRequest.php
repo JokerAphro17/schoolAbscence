@@ -13,7 +13,7 @@ class StoreSceanceCourRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StoreSceanceCourRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'module_id'=> 'required',
+            'classe_id' => 'required',
+            'enseignant_id'=> 'required', 
+            'duree'=> 'required',
+            'date'=> 'required',  
         ];
     }
 }

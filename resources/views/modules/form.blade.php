@@ -3,7 +3,7 @@
 			<!-- PAGE-HEADER -->
 			<div class="page-header">
 				<div>
-					<h1 class="page-title">Hi! Welcome To Dashboard</h1>
+					<h1 class="page-title">Salut! Bienvenu dans notre application de Gestion des Absences</h1>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
 						<li class="breadcrumb-item active" aria-current="page">Sales Dashboard</li>
@@ -11,31 +11,13 @@
 				</div>
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
-						<a href="#" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						<a href="{{route('modules.index')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
-								<i class="fe fe-shopping-cart"></i>
+								<i class="fe fe-arrow-left">
+                                </i>
+                                Retour à la liste
 							</span>
 						</a>
-						<a href="#" class="btn btn-orange btn-icon text-white" data-toggle="tooltip" title="Download" data-placement="top">
-							<span>
-								<i class="fe fe-download"></i>
-							</span>
-						</a>
-						<a href="#" class="btn btn-info btn-icon text-white" data-toggle="tooltip" title="Add User" data-placement="top">
-							<span>
-								<i class="fe fe-plus"></i>
-							</span>
-						</a>
-						<a href="#" class="btn btn-secondary btn-icon text-white dropdown-toggle" data-toggle="dropdown">
-							<span>
-								<i class="fe fe-external-link"></i>
-							</span> Export <span class="caret"></span>
-						</a>
-						<div class="dropdown-menu" role="menu">
-							<a href="#" class="dropdown-item"><i class="bx bxs-file-pdf mr-2"></i>Export as Pdf</a>
-							<a href="#" class="dropdown-item"><i class="bx bxs-file-image mr-2"></i>Export as Image</a>
-							<a href="#" class="dropdown-item"><i class="bx bxs-file mr-2"></i>Export as Excel</a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -43,6 +25,56 @@
 @endsection
 @section('content')
 			<!-- ROW-1 -->
+			<div class="row">
+                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Nouveau modules
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+                                    <form action="{{route('modules.store')}}" method="post">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                                        
+                                                <div class="form-group">
+                                                    <label class="form-label">
+														Code du module
+													</label>
+                                                    <input type="text" class="form-control" name="nom" placeholder="Renseignez le code du module">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+												<div class="form-group">
+                                                    <label class="form-label">
+														Nom du module
+													</label>
+                                                    <input type="text" class="form-control" name="nom" placeholder="Renseignez le nom du module">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class=" col-md-6 ">
+                                                <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
+                                            </div>
+                                            <div class=" d-flex  justify-content-right ">
+                                                <a
+                                                href="{{route('modules.index')}}"
+                                                class="btn btn-outline-danger">Annuler</a>
+                                            </div>
+                                        </div>
+                                                
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         
 

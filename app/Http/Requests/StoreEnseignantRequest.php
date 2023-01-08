@@ -13,7 +13,7 @@ class StoreEnseignantRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreEnseignantRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nom'=> 'required',
+            'prenom' => 'required',
+            'email'=> 'required|unique:enseignants,ine', 
+            'telephone'=> 'required|unique:enseignant,telephone', 
         ];
     }
 }

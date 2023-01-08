@@ -13,7 +13,7 @@ class UpdateEleveRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class UpdateEleveRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ine'=> 'required|unique:eleves,ine,'. $this->route('eleve')->id,
+            'nom'=> 'required,'. $this->route('eleve')->id,
+            'prenom' => 'required,'. $this->route('eleve')->id,
+            'sexe' =>'required,'. $this->route('eleve')->id,
+            'date_naissance' => 'required,'. $this->route('eleve')->id,
+            'lieu_naissaance' => 'required,'. $this->route('eleve')->id,
+            'class_id' => 'required,'. $this->route('eleve')->id,
         ];
     }
 }

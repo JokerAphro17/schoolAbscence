@@ -2,7 +2,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('assets/images/brand/favicon.ico')}}" />
 
 		<!-- TITLE -->
-		<title>Yoha – HTML5 Bootstrap Admin Template</title>
+		<title>Gestion des absences d'une Ecole</title>
 
 		<!-- BOOTSTRAP CSS -->
 		<link href="{{URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />

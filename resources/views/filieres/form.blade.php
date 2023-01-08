@@ -3,7 +3,7 @@
 			<!-- PAGE-HEADER -->
 			<div class="page-header">
 				<div>
-					<h1 class="page-title">Hi! Welcome To Dashboard</h1>
+					<h1 class="page-title">Salut! Bienvenu dans notre application de Gestion des Absences</h1>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
 						<li class="breadcrumb-item active" aria-current="page">Sales Dashboard</li>
@@ -12,7 +12,7 @@
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
 					
-						<a href="{{route('filieres.create')}}" class="btn btn-info btn-icon text-white" data-toggle="tooltip" title="Add User" data-placement="top">
+						<a href="{{route('filieres.index')}}" class="btn btn-info btn-icon text-white" data-toggle="tooltip" title="Add User" data-placement="top">
 							<span>
 								<i class="fe fe-arrow-left">
                                 </i>
@@ -31,8 +31,9 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title
-                            ">Nouvelle filière</h3>
+                            <h3 class="card-title">
+                                Nouvelle filière
+                            </h3>
                         </div>
                         <div class="card-body">
                             <div class="row">

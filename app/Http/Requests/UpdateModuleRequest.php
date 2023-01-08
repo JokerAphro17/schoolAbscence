@@ -13,7 +13,7 @@ class UpdateModuleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateModuleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'required|unique:modules,code,' . $this->route('module')->id,
+            'nom' => 'required|unique:modules,nom,' . $this->route('module')->id,
         ];
     }
 }
