@@ -11,7 +11,7 @@
 				</div>
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
-						<a href="{{route('classes.index')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						<a href="{{route('abscences.index')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
 								<i class="fe fe-arrow-left">
                                 </i>
@@ -30,10 +30,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                @if(isset($classe))
-                                    Modifier la classe
+                                @if(isset($abscence))
+                                    Modifier la abscence
                                 @else
-                                    Nouvelle classe
+                                    Nouvelle abscence
                                 @endif
                             </h3>
                         </div>
@@ -41,10 +41,10 @@
                             <div class="row">
                                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                                     <form 
-                                    @if(isset($classe))
-                                        action="{{route('classes.update',$classe->id)}}"
+                                    @if(isset($abscence))
+                                        action="{{route('abscences.update',$abscence->id)}}"
                                     @else
-                                        action="{{route('classes.store')}}"
+                                        action="{{route('abscences.store')}}"
                                     @endif 
                                     method="post">
                                         @if(isset($module))
@@ -56,26 +56,36 @@
                                         
                                                 <div class="form-group">
                                                     <label class="form-label">
-														Entrer la Classe
+														Elève
 													</label>
-                                                    <input type="text" class="form-control" 
-                                                    value="{{$classe->nom ?? old('nom')}}"
-                                                     name="nom" placeholder="Renseignez le code du module">
+                                                    <select class="select2 form-control custum-select " name="eleve_id">
+                                                        <option value="">...</option>
+                                                        @foreach ($eleve as $eleve )
+                                                            <option value="{{$eleve->id}}">
+                                                                {{$eleve->nom}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
 												<div class="form-group">
                                                     <label class="form-label">
-														Filiere
+														Seance de cours
 													</label>
-                                                    <select class="select2 form-control custum-select " name="filiere_id">
+                                                    <select class="select2 form-control custum-select " name="seance_cour_id">
                                                         <option value="">...</option>
-                                                        @foreach ($filieres as $filiere )
-                                                            <option value="{{$filiere->id}}">
-                                                                {{$filiere->nom}}
+                                                        @foreach ($seance_cours as $seance_cour )
+                                                            <option value="{{$seance_cour->id}}">
+                                                                {{$seance_cour->nom}}
                                                             </option>
                                                         @endforeach
                                                     </select>
+
+                                                    <label class="form-label">Motif</label>
+                                            <textarea class="form-control" 
+                                            
+                                            name="motif" placeholder="Description du motif"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +95,7 @@
                                             </div>
                                             <div class=" d-flex  justify-content-right ">
                                                 <a
-                                                href="{{route('classes.index')}}"
+                                                href="{{route('abscences.index')}}"
                                                 class="btn btn-outline-danger">Annuler</a>
                                             </div>
                                         </div>

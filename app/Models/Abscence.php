@@ -19,10 +19,14 @@ class Abscence extends Model
 
     public function eleves()
     {
-        //
+        return $this->belongsTo(Eleve::class);
     }
 
     protected $casts = [
         'id' => 'string',
     ];
+
+    public function seance_cour(){
+        return $this->belongsTo(seance_cour::class);
+    }
 }

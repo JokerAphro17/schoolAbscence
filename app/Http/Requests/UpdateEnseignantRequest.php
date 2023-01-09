@@ -24,10 +24,10 @@ class UpdateEnseignantRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom'=> 'required,'. $this->route('enseignant')->id,
-            'prenom' => 'required,'. $this->route('enseignant')->id,
-            'email'=> 'required|unique:enseignants,ine,'. $this->route('enseignant')->id,
-            'telephone'=> 'required|unique:enseignant,telephone,'. $this->route('enseignant')->id, 
+            'nom'=> 'required',
+            'prenom' => 'required',
+            'email'=> 'required|unique:enseignants,email,'. $this->route('enseignant')->id,
+            'telephone'=> 'required', 
         ];
     }
 }

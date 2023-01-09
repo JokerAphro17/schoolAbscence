@@ -24,6 +24,16 @@ class SceanceCour extends Model
         return $this->belongsTo(Module::class);
     }
 
+    public function classe()
+    {
+        return $this->belongsTo(Classe::class);
+    }
+
+    public function enseignant()
+    {
+        return $this->belongsTo(Enseignant::class);
+    }
+
     protected $casts = [
         'id' => 'string',
     ];

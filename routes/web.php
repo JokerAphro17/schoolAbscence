@@ -1,5 +1,6 @@
 <?php
 
+//use App\Http\Controllers\AbscenceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
@@ -19,6 +20,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('filieres', FiliereController::class);
     Route::resource('modules', ModuleController::class);
     Route::resource('classes', ClasseController::class);
+    Route::resource('abscences', AbscenceController::class);
+    Route::resource('seance_cours', SceanceCourController::class);
+    Route::resource('enseignants', EnseignantController::class);
 });
 
 
