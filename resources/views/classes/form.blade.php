@@ -56,7 +56,7 @@
                                         
                                                 <div class="form-group">
                                                     <label class="form-label">
-														Entrer la Classe
+													Entrer la Classe
 													</label>
                                                     <input type="text" class="form-control" 
                                                     value="{{$classe->nom ?? old('nom')}}"

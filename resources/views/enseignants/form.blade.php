@@ -58,14 +58,14 @@
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
                                         
                                                 <div class="form-group">
-                                                    <label class="form-label">Nom </label>
+                                                    <label class="form-label">
+                                                        Nom 
+                                                    </label>
                                                     <input type="text" class="form-control"
                                                     value="{{$enseignant->nom ?? old('nom')}}"
                                                     name="nom" placeholder="Nom">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
                                         
                                                 <div class="form-group">
@@ -86,8 +86,6 @@
                                                     name="email" placeholder="Email">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
                                         
                                                 <div class="form-group">
