@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Eleve;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
+use App\Models\Classe;
 
 class EleveController extends Controller
 {
@@ -15,7 +16,8 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        $eleves = Eleve::all();
+        return view('eleves.index', ['eleves' => $eleves]);
     }
 
     /**
@@ -25,7 +27,8 @@ class EleveController extends Controller
      */
     public function create()
     {
-        //
+        $classes = Classe::all();
+        return view('eleves.form', ['classes' => $classes]);
     }
 
     /**
@@ -36,7 +39,11 @@ class EleveController extends Controller
      */
     public function store(StoreEleveRequest $request)
     {
-        //
+        $input = $request->all();
+
+        Eleve::create($input);
+        $request->session()->flash('success', 'Eleve enregistré avec succès.');
+        return redirect()->route('eleves.index');
     }
 
     /**
@@ -47,7 +54,7 @@ class EleveController extends Controller
      */
     public function show(Eleve $eleve)
     {
-        //
+        return view('eleves.show', ['eleve' => $eleve]);
     }
 
     /**
@@ -58,7 +65,8 @@ class EleveController extends Controller
      */
     public function edit(Eleve $eleve)
     {
-        //
+        $classes = Classe::all();
+        return view('eleves.form', ['eleve' => $eleve, 'classes' => $classes]);
     }
 
     /**
@@ -70,7 +78,11 @@ class EleveController extends Controller
      */
     public function update(UpdateEleveRequest $request, Eleve $eleve)
     {
-        //
+        $input = $request->all();
+
+        $eleve->update($input);
+        $request->session()->flash('success', 'Eleve modifié avec succès.');
+        return redirect()->route('eleves.index');
     }
 
     /**
@@ -81,6 +93,7 @@ class EleveController extends Controller
      */
     public function destroy(Eleve $eleve)
     {
-        //
+        $eleve->delete();
+        return redirect()->route('eleves.index');
     }
 }

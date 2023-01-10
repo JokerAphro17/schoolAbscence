@@ -24,13 +24,13 @@ class StoreEleveRequest extends FormRequest
     public function rules()
     {
         return [
-            'ine'=> 'required|unique:eleves,ine', 
-            'nom'=> 'required',
+            'ine' => 'required|unique:eleves,ine',
+            'nom' => 'required',
             'prenom' => 'required',
-            'sexe' =>'required',
+            'sexe' => 'required',
             'date_naissance' => 'required',
-            'lieu_naissaance' => 'required',
-            'class_id' => 'required',
+            'lieu_naissance' => 'required',
+            'classe_id' => 'required',
         ];
     }
 }
