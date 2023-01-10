@@ -81,45 +81,55 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="form-label">
-                                                            Enseignant
-                                                        </label>
-                                                        <select class="select2 form-control custum-select " name="enseignant_id">
-                                                            <option value="">...</option>
-                                                            @foreach ($enseignants as $enseignant )
-                                                                <option value="{{$enseignant->id}}">
-                                                                    {{$enseignant->nom}}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-                                        
+                                                
                                                 <div class="form-group">
                                                     <label class="form-label">
-														Entrer la durée
+                                                        Entrer la durée
 													</label>
                                                     <input type="text" class="form-control" 
                                                     value="{{$sceanceCour->duree ?? old('duree')}}"
-                                                     name="duree" placeholder="Renseignez la durée">
+                                                    name="duree" placeholder="Renseignez la durée">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-                                        
+                                                
                                                 <div class="form-group">
                                                     <label class="form-label">
-														Entrer la date
+                                                        Entrer la date
 													</label>
                                                     <input type="text" class="form-control" 
                                                     value="{{$sceanceCour->date ?? old('date')}}"
                                                      name="date" placeholder="Renseignez la date">
                                                 </div>
                                             </div>
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                    Heure de debut
+                                                </label>
+                                                <input type="text" class="form-control" 
+                                                value="{{$sceanceCour->heure_debut ?? old('date')}}"
+                                                 name="date" placeholder="Renseignez l'heure de debut">
+                                            </div>
                                         </div>
+                                        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">
+                                                    Enseignant
+                                                </label>
+                                                <select class="select2 form-control custum-select " name="enseignant_id">
+                                                    <option value="">...</option>
+                                                    @foreach ($enseignants as $enseignant )
+                                                    <option value="{{$enseignant->id}}">
+                                                        {{$enseignant->nom}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                         <div class="row justify-content-between">
                                             <div class=" col-md-6 ">
                                                 <button type="submit" class="btn btn-outline-primary">Enregistrer</button>

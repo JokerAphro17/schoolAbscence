@@ -20,6 +20,8 @@ class CreateSceanceCoursTable extends Migration
             $table->foreignUuid('enseignant_id')->constrained('enseignants');
             $table->integer('duree');
             $table->string('date');
+            $table->string('heure_debut');
+            $table->boolean('etat')->default(0);
             $table->timestamps();
         });
     }
