@@ -30,7 +30,7 @@ class ClasseController extends Controller
     {
 
         $filieres = Filiere::all();
-        return view('classes.form', ['filieres'=> $filieres]);
+        return view('classes.form', ['filieres' => $filieres]);
     }
 
     /**
@@ -67,7 +67,8 @@ class ClasseController extends Controller
      */
     public function edit(Classe $classe)
     {
-        return view('classes.form', ['classe' => $classe]);
+        $filieres = Filiere::all();
+        return view('classes.form', ['classe' => $classe, 'filieres' => $filieres]);
     }
 
     /**

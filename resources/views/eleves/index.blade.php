@@ -11,11 +11,11 @@
 				</div>
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
-						<a href="{{route('classes.create')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						<a href="{{route('eleves.create')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
 								<i class="fe fe-plus">
                                 </i>
-                                Nouveau classe
+                                Nouvel élève
 							</span>
 						</a>
 					</div>
@@ -29,40 +29,72 @@
 				<div class="col-md-12 col-lg-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Les classes</h3>
+							<h3 class="card-title">Les eleves</h3>
 						</div>
 						<div class="card-body">
 						   
-							@if($classes->count() == 0)
+							@if($eleves->count() == 0)
 								<h5 class="text-muted text-center">
-									Aucun classe trouvé
+									Aucun eleve trouvé
 								</h5>
 							@else
 							<div class="table-responsive">
 								<table id="data-table1" class="table table-striped table-bordered text-nowrap w-100">
 									<thead>
 										<tr>
-											<th class="wd-15p">Nom du classe</th>
-											<th class="wd-15p">Filiere</th>
-											<th class="wd-15p">Action</th>
+											<th class="wd-15p">INE</th>
+											<th class="wd-15p">Nom</th>
+											<th class="wd-15p">Prénom</th>
+											<th class="wd-15p">Date de naissance</th>
+											<th class="wd-15p">Lieu de naissance</th>
+											<th class="wd-15p">Sexe</th>
+											<th class="wd-15p">Classe</th>
 										</tr>
 									</thead>
 									<tbody>
 										
-										@foreach ($classes as $classe )
+										@foreach ($eleves as $eleve )
 										<tr>
 											<td>
 												{{
-													$classe->nom
+													$eleve->ine
 												}}
 											</td>
 											<td>
 												{{
-													$classe->filiere->nom
+													$eleve->nom
 												}}
 											</td>
 											<td>
-												<a href="{{route('classes.edit', $classe->id)}}" class="btn btn-outline-primary">
+												{{
+													$eleve->prenom
+												}}
+											</td>
+											<td>
+												{{
+													$eleve->date_naissance
+												}}
+											</td>
+											<td>
+												{{
+													$eleve->lieu_naissance
+												}}
+											</td>
+											<td>
+												{{
+													$eleve->sexe
+												}}
+											</td>
+											<td>
+												{{
+													$eleve->classe->nom
+												}}
+											</td>
+
+											
+										
+											<td>
+												<a href="{{route('eleves.edit', $eleve)}}" class="btn btn-outline-primary">
 													<i class="fa fa-edit    
 													"></i> Modifier
 												</a>

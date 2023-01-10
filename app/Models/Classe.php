@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Classe extends Model
 {
     use HasFactory, Uuid;
-    protected $fillable =[
+    protected $fillable = [
         "nom",
         "filiere_id",
     ];
@@ -17,8 +17,14 @@ class Classe extends Model
     protected $casts = [
         'id' => 'string',
     ];
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 
-    public function filiere(){
+
+    public function filiere()
+    {
         return $this->belongsTo(Filiere::class);
     }
 }

@@ -47,10 +47,11 @@
                                         action="{{route('classes.store')}}"
                                     @endif 
                                     method="post">
-                                        @if(isset($module))
+                                        @if(isset($classe))
                                             @method('PUT')
                                         @endif
                                         @csrf
+                                        <input type="hidden" name="class" value="{{ $classe->id ?? '' }}">
                                         <div class="row">
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
                                         
@@ -71,7 +72,13 @@
                                                     <select class="select2 form-control custum-select " name="filiere_id">
                                                         <option value="">...</option>
                                                         @foreach ($filieres as $filiere )
-                                                            <option value="{{$filiere->id}}">
+                                                            <option
+                                                            @if(isset($classe))
+                                                                @if($classe->filiere_id == $filiere->id)
+                                                                    selected
+                                                                @endif
+                                                            @endif
+                                                            value="{{$filiere->id}}">
                                                                 {{$filiere->nom}}
                                                             </option>
                                                         @endforeach
