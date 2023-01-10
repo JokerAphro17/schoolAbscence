@@ -1,5 +1,6 @@
 <?php
 
+//use App\Http\Controllers\AbscenceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClasseController;
@@ -20,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('filieres', FiliereController::class);
     Route::resource('modules', ModuleController::class);
+    Route::resource('seance_cours', SceanceCourController::class);
+    Route::resource('enseignants', EnseignantController::class);
     Route::get('classes', [ClasseController::class, 'index'])->name('classes.index');
     Route::get('classes/create', [ClasseController::class, 'create'])->name('classes.create');
     Route::post('classes', [ClasseController::class, 'store'])->name('classes.store');

@@ -15,7 +15,9 @@ class EnseignantController extends Controller
      */
     public function index()
     {
-        //
+        $enseignants = Enseignant::all();
+
+        return view('enseignants.index', ['enseignants' => $enseignants]);
     }
 
     /**
@@ -25,7 +27,7 @@ class EnseignantController extends Controller
      */
     public function create()
     {
-        //
+        return view('enseignants.form');
     }
 
     /**
@@ -36,7 +38,11 @@ class EnseignantController extends Controller
      */
     public function store(StoreEnseignantRequest $request)
     {
-        //
+        $input = $request->all();
+
+        Enseignant::create($input);
+        $request->session()->flash('success', 'Enseignant created successfully.');
+        return redirect()->route('enseignants.index');
     }
 
     /**
@@ -47,7 +53,7 @@ class EnseignantController extends Controller
      */
     public function show(Enseignant $enseignant)
     {
-        //
+        return view('enseignants.show', ['enseignant' => $enseignant]);
     }
 
     /**
@@ -58,7 +64,7 @@ class EnseignantController extends Controller
      */
     public function edit(Enseignant $enseignant)
     {
-        //
+        return view('enseignants.form', ['enseignant' => $enseignant]);
     }
 
     /**
@@ -70,7 +76,10 @@ class EnseignantController extends Controller
      */
     public function update(UpdateEnseignantRequest $request, Enseignant $enseignant)
     {
-        //
+        $input = $request->all();
+        $enseignant->update($input);
+        $request->session()->flash('success', 'Enseignant a été modifié avec succès');
+        return redirect()->route('enseignants.index');
     }
 
     /**
@@ -81,6 +90,8 @@ class EnseignantController extends Controller
      */
     public function destroy(Enseignant $enseignant)
     {
-        //
+        $enseignant->delete();
+
+        return redirect()->route('enseignants.index')->with('success', 'Enseignant a été supprimé avec succès');
     }
 }
