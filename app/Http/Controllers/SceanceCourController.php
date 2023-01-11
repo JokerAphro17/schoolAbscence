@@ -33,7 +33,7 @@ class SceanceCourController extends Controller
         $modules = Module::all();
         $classes = Classe::all();
         $enseignants = Enseignant::all();
-        return view('seance_cours.form',['modules'=>$modules, 'classes'=>$classes, 'enseignants'=>$enseignants]);
+        return view('seance_cours.form', ['modules' => $modules, 'classes' => $classes, 'enseignants' => $enseignants]);
     }
 
     /**

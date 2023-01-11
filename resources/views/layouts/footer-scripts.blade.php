@@ -35,6 +35,8 @@
 		<script src="{{URL::asset('assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 
 
+		<script src="{{URL::asset('assets/js/dayjs.min.js')}}" ></script>
+		<script src="{{URL::asset('assets/js/timepicker-bs4.js')}}"></script>
 		@yield('js')
 		<!-- SIDEBAR JS -->
 		<script src="{{URL::asset('assets/plugins/sidebar/sidebar.js')}}"></script>
