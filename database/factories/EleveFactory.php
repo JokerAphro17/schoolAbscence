@@ -14,7 +14,15 @@ class EleveFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "ine" =>"N".rand(10000000,999999999),
+            "nom" =>$this->faker->lastName(),
+            "prenom" =>$this->faker->firstName(),
+            "date_naissance" =>$this->faker->date(),
+            "lieu_naissance" =>$this->faker->text(),
+            "sexe" =>$this->faker->randomElement([
+                "Masculin",
+                "Feminin",
+            ]),
         ];
     }
 }

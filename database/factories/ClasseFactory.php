@@ -14,7 +14,8 @@ class ClasseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "nom" =>$this->faker->text(),
+            "filiere_id" => 1,
         ];
     }
 }

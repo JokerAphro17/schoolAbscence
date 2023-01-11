@@ -16,7 +16,7 @@ class AbscenceController extends Controller
      */
     public function index()
     {
-        $abscences = Abscence::all();
+        $abscences = Abscence::all()->paginate(5);
 
         return view('abscences.index', ['abscences' => $abscences]);
     }
