@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\FiliereSeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 
@@ -26,5 +27,9 @@ class DatabaseSeeder extends Seeder
         foreach ($users as $user) {
             \App\User::create($user);
         }
+    $this->call([FiliereSeeder::class]);
+    
     }
+
+
 }

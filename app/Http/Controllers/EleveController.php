@@ -16,7 +16,7 @@ class EleveController extends Controller
      */
     public function index()
     {
-        $eleves = Eleve::all();
+        $eleves = Eleve::latest()->paginate(5);
         return view('eleves.index', ['eleves' => $eleves]);
     }
 
