@@ -54,10 +54,10 @@
 										
 										@foreach ($seance_cours as $classe )
 										<tr>
-											<td>
-												{{
-													$classe->module->nom
-												}}
+											<td><a href="{{route('seance_cours.show',$classe)}}">
+												
+												{{$classe->module->nom}}</a></td>
+												
 											</td>
 											<td>
 												{{

@@ -99,7 +99,7 @@
                                                     <label class="form-label">
                                                         Entrer la date
 													</label>
-                                                    <input type="text" class="form-control" 
+                                                    <input type="date" class="form-control" 
                                                     value="{{$sceanceCour->date ?? old('date')}}"
                                                      name="date" placeholder="Renseignez la date">
                                                 </div>
@@ -109,9 +109,8 @@
                                                     <label class="form-label">
                                                     Heure de debut
                                                 </label>
-                                                <input type="text" class="form-control" 
-                                                value="{{$sceanceCour->heure_debut ?? old('date')}}"
-                                                 name="date" placeholder="Renseignez l'heure de debut">
+                                                <input type="text" id="example" class="form-control" name="heure_debut" autocomplete="off" />                                                
+                                                
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
@@ -166,4 +165,14 @@
 
 		<!--INTERNAL  INDEX JS -->
 		<script src="{{URL::asset('assets/js/index1.js')}}"></script>
+        <script>
+            jQuery('#example').timepicker({
+            
+            
+
+
+                });
+
+        </script>
+                
 @endsection

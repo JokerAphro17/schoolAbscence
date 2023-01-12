@@ -9,12 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class SceanceCour extends Model
 {
     use HasFactory, Uuid;
-    protected $fillable =[
+    protected $fillable = [
         "module_id",
         "classe_id",
         "enseignant_id",
         "duree",
         "date",
+        'heure_debut',
     ];
 
     // on recupere le module d'une sceance de cours
@@ -37,4 +38,13 @@ class SceanceCour extends Model
     protected $casts = [
         'id' => 'string',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
+    // remove all guard 
+
+    protected $guarded = [];
 }

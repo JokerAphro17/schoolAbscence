@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateSceanceCourRequest;
 use App\Models\Classe;
 use App\Models\Enseignant;
 use App\Models\Module;
+use App\Services\DateService;
 
 class SceanceCourController extends Controller
 {
@@ -32,8 +33,9 @@ class SceanceCourController extends Controller
     {
         $modules = Module::all();
         $classes = Classe::all();
+
         $enseignants = Enseignant::all();
-        return view('seance_cours.form',['modules'=>$modules, 'classes'=>$classes, 'enseignants'=>$enseignants]);
+        return view('seance_cours.form', ['modules' => $modules, 'classes' => $classes, 'enseignants' => $enseignants]);
     }
 
     /**
@@ -45,7 +47,8 @@ class SceanceCourController extends Controller
     public function store(StoreSceanceCourRequest $request)
     {
         $input = $request->all();
-
+        $service = new DateService();
+        $input['heure_debut'] = $service->convertDate($input['heure_debut']);
         SceanceCour::create($input);
         $request->session()->flash('success', 'La seance a ete crée avec succès.');
         return redirect()->route('seance_cours.index');
@@ -59,6 +62,9 @@ class SceanceCourController extends Controller
      */
     public function show(SceanceCour $sceanceCour)
     {
+
+
+        dd($sceanceCour);
         return view('seance_cours.show', ['sceanceCour' => $sceanceCour]);
     }
 

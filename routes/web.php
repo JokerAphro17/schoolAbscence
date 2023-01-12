@@ -3,8 +3,9 @@
 //use App\Http\Controllers\AbscenceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\EleveController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\SceanceCourController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,16 @@ use App\Http\Controllers\EleveController;
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('filieres', FiliereController::class);
     Route::resource('modules', ModuleController::class);
-    Route::resource('seance_cours', SceanceCourController::class);
+    Route::get('seance_cours', [SceanceCourController::class, 'index'])->name('seance_cours.index');
+    Route::get('seance_cours/create', [SceanceCourController::class, 'create'])->name('seance_cours.create');
+    Route::post('seance_cours', [SceanceCourController::class, 'store'])->name('seance_cours.store');
+    Route::get('seance_cours/{seance_cour}', [SceanceCourController::class, 'show'])->name('seance_cours.show');
+    Route::get('seance_cours/{seance_cour}/edit', [SceanceCourController::class, 'edit'])->name('seance_cours.edit');
+    Route::put('seance_cours/{seance_cour}', [SceanceCourController::class, 'update'])->name('seance_cours.update');
+
     Route::resource('enseignants', EnseignantController::class);
     Route::get('classes', [ClasseController::class, 'index'])->name('classes.index');
     Route::get('classes/create', [ClasseController::class, 'create'])->name('classes.create');
