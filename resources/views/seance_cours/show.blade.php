@@ -44,7 +44,41 @@
 @section('content')
 			<!-- ROW-1 -->
 
-        
+        <div class="card">
+			<div class="row">
+				<div class="col-6">
+					Information 1
+				</div>
+				<div class="col-6">
+					Information 2
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="row">
+				<div class="col-6">
+					<h4>Liste de présence</h4>
+					{{dd($sceanceCour->classe)}}
+					@forelse ($sceanceCour->classe->etudiants as $eleve)
+						<div class="row">
+							<div class="col-6">
+								{{$eleve->nom}}
+							</div>
+							<div class="col-6">
+								<input type="checkbox" name="eleve[]" value="{{$eleve->id}}">
+							</div>
+						</div>
+					
+						
+					@empty
+							
+						<div class="alert alert-danger">
+							<p>Aucun élève dans cette classe</p>
+						</div>
+					@endforelse
+				</div>
+			</div>
+		</div>
 
             <!-- ROW-1 CLOSED -->
 @endsection

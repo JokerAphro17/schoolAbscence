@@ -38,4 +38,13 @@ class SceanceCour extends Model
     protected $casts = [
         'id' => 'string',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
+    // remove all guard 
+
+    protected $guarded = [];
 }

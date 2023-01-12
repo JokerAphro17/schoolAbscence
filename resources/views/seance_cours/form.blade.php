@@ -167,8 +167,10 @@
 		<script src="{{URL::asset('assets/js/index1.js')}}"></script>
         <script>
             jQuery('#example').timepicker({
-                maxTime:'17:00',
-                minTime:'09:00',
+            
+            
+
+
                 });
 
         </script>

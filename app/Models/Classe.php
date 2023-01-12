@@ -27,4 +27,9 @@ class Classe extends Model
     {
         return $this->belongsTo(Filiere::class);
     }
+
+    public function etudiants()
+    {
+        return $this->hasMany(Etudiant::class);
+    }
 }
