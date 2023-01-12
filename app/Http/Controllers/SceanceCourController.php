@@ -18,7 +18,7 @@ class SceanceCourController extends Controller
      */
     public function index()
     {
-        $seance_cours = SceanceCour::all();
+        $seance_cours = SceanceCour::latest()->paginate(1);
 
         return view('seance_cours.index', ['seance_cours' => $seance_cours]);
     }

@@ -115,7 +115,18 @@
 					</div>
 				</div>
 			</div>
-        
+			
+			
+			<div class="row justify-content-end">
+			 <div class="col-4">
+
+			   <div class="pagination">
+				{{$eleves->links()}}
+			   </div>
+			 </div>
+
+		    </div>
+		  		
 
             <!-- ROW-1 CLOSED -->
 @endsection

@@ -15,7 +15,7 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        $filieres = Filiere::all();
+        $filieres = Filiere::latest()->paginate(1);
 
         return view('filieres.index', ['filieres' => $filieres]);
     }
