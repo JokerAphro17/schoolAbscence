@@ -23,10 +23,6 @@ class StoreAbscenceRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'eleve_id'=> 'required|unique:absences,eleve_id',
-            'sceance_cour_id' => 'required|unique:absences,sceance_cour_id',
-            'motif' =>'required',
-        ];
+        return [];
     }
 }

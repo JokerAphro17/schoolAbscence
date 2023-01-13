@@ -17,7 +17,6 @@ class CreateAbscencesTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('eleve_id')->constrained('eleves');
             $table->foreignUuid('sceance_cour_id')->constrained('sceance_cours');
-            $table->string('motif');
             $table->timestamps();
         });
     }

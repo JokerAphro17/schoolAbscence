@@ -28,8 +28,8 @@ class Classe extends Model
         return $this->belongsTo(Filiere::class);
     }
 
-    public function etudiants()
+    public function eleves()
     {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Eleve::class);
     }
 }

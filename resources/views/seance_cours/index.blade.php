@@ -43,7 +43,7 @@
 									<thead>
 										<tr>
 											<th class="wd-15p">Module</th>
-											<th class="wd-15p">Classe</th>
+											<th class="wd-15p">seance_cour</th>
 											<th class="wd-15p">Enseignant</th>
 											<th class="wd-15p">durée</th>
 											<th class="wd-15p">date</th>
@@ -52,35 +52,35 @@
 									</thead>
 									<tbody>
 										
-										@foreach ($seance_cours as $classe )
+										@foreach ($seance_cours as $seance_cour )
 										<tr>
-											<td><a href="{{route('seance_cours.show',$classe)}}">
+											<td><a href="{{route('seance_cours.show',['id'=>$seance_cour->id])}}">
 												
-												{{$classe->module->nom}}</a></td>
+												{{$seance_cour->module->nom}}</a></td>
 												
 											</td>
 											<td>
 												{{
-													$classe->classe->nom
+													$seance_cour->classe->nom
 												}}
 											</td>
 											<td>
 												{{
-													$classe->enseignant->nom
+													$seance_cour->enseignant->nom
 												}}
 											</td>
 											<td>
 												{{
-													$classe->duree
+													$seance_cour->duree
 												}}
 											</td>
 											<td>
 												{{
-													$classe->date
+													$seance_cour->date
 												}}
 											</td>
 											<td>
-												<a href="{{route('seance_cours.edit', $classe)}}" class="btn btn-outline-primary">
+												<a href="{{route('seance_cours.edit', $seance_cour)}}" class="btn btn-outline-primary">
 													<i class="fa fa-edit    
 													"></i> Modifier
 												</a>

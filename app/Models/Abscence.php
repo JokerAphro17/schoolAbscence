@@ -10,10 +10,9 @@ class Abscence extends Model
 {
     use HasFactory, Uuid;
 
-    protected $fillable =[
+    protected $fillable = [
         "eleve_id",
         "sceance_cour_id",
-        "motif",
     ];
     // cette fonction permet de recuperer tout les eleves qui ont une absence 
 
@@ -26,7 +25,8 @@ class Abscence extends Model
         'id' => 'string',
     ];
 
-    public function seance_cour(){
+    public function seance_cour()
+    {
         return $this->belongsTo(seance_cour::class);
     }
 }

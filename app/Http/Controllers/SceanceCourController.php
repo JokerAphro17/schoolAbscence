@@ -9,6 +9,7 @@ use App\Models\Classe;
 use App\Models\Enseignant;
 use App\Models\Module;
 use App\Services\DateService;
+use Illuminate\Http\Request;
 
 class SceanceCourController extends Controller
 {
@@ -60,11 +61,13 @@ class SceanceCourController extends Controller
      * @param  \App\Models\SceanceCour  $sceanceCour
      * @return \Illuminate\Http\Response
      */
-    public function show(SceanceCour $sceanceCour)
+    public function show(Request $request)
     {
 
 
-        dd($sceanceCour);
+        $id = $request->query('id');
+        $sceanceCour = SceanceCour::find($id);
+
         return view('seance_cours.show', ['sceanceCour' => $sceanceCour]);
     }
 

@@ -40,8 +40,12 @@ class AbscenceController extends Controller
     public function store(StoreAbscenceRequest $request)
     {
         $input = $request->all();
+        $abscents = $input['abscences'];
+        foreach ($abscents as $abscent) {
+            $input['eleve_id'] = $abscent;
+            Abscence::create($input);
+        }
 
-        Abscence::create($input);
         $request->session()->flash('success', 'Abscence created successfully.');
         return redirect()->route('abscences.index');
     }
@@ -78,8 +82,6 @@ class AbscenceController extends Controller
     public function update(UpdateAbscenceRequest $request, Abscence $abscence)
     {
         $input = $request->all();
-        $abscence->update($input);
-        $request->session()->flash('success', 'Absence a été modifié avec succès');
         return redirect()->route('abscences.index');
     }
 

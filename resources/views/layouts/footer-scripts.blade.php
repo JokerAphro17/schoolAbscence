@@ -37,6 +37,7 @@
 
 		<script src="{{URL::asset('assets/js/dayjs.min.js')}}" ></script>
 		<script src="{{URL::asset('assets/js/timepicker-bs4.js')}}"></script>
+		<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 		@yield('js')
 		<!-- SIDEBAR JS -->
 		<script src="{{URL::asset('assets/plugins/sidebar/sidebar.js')}}"></script>

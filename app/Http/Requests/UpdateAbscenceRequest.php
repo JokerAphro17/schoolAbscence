@@ -23,10 +23,6 @@ class UpdateAbscenceRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'eleve_id'=> 'required|unique:absences,eleve_id,'. $this->route('absence')->id,
-            'sceance_cour_id' => 'required|unique:absences,sceance_cour_id,'. $this->route('absence')->id,
-            'motif' =>'required,'. $this->route('absence')->id,
-        ];
+        return [];
     }
 }
