@@ -106,6 +106,13 @@
 				<!-- ROW-3 CLOSED-->
 
 				<!-- ROW-4 -->
+				<div class="row justify-content-end">
+					<div class="col-4">
+					  <div class="pagination">
+					     {{$enseignants->links()}}
+					  </div>
+					</div>
+				</div>
 			
 @endsection
 @section('js')

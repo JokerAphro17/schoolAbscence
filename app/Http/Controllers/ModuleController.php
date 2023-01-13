@@ -15,7 +15,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::all();
+        $modules = Module::latest()->paginate(1);
 
         return view('modules.index', ['modules' => $modules]);
     }
