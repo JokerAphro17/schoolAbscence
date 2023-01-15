@@ -46,14 +46,17 @@
 
 			<div class="card">
 				<div class="card-body">
-	
 					<div class="row">
 						<div class="col-6">
-							Information 1
-						</div>
-						<div class="col-6">
-							Information 2
-						</div>
+							<dl class="row">
+								<dt class="col-sm-3">Nom :</dt>
+								<dd class="col-sm-9">{{$classe->nom}}</dd>
+								<dt class="col-sm-3">Filiere :</dt>
+								<dd class="col-sm-9">{{$classe->filiere->nom}}</dd>
+								<dt class="col-sm-3">Nb d'eleves:</dt>
+								<dd class="col-sm-9">{{$classe->eleves->count()}}</dd>
+							</dl>
+						</div>						
 					</div>
 				</div>
 			</div>

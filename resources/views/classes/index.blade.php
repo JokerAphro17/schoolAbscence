@@ -15,7 +15,7 @@
 							<span>
 								<i class="fe fe-plus">
                                 </i>
-                                Nouveau classe
+                                Nouvelle classe
 							</span>
 						</a>
 					</div>

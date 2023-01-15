@@ -73,7 +73,7 @@
 												}}
 											</td>
 											<td>
-												<a href="{{route('seance_cours.edit', $seance_cour)}}" class="btn btn-outline-primary">
+												<a href="{{route('seance_cours.edit',['id' =>$seance_cour])}}" class="btn btn-outline-primary">
 													<i class="fa fa-edit    
 													"></i> Modifier
 												</a>

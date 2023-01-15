@@ -53,7 +53,7 @@ class SceanceCourController extends Controller
         $service = new DateService();
         $input['heure_debut'] = $service->convertDate($input['heure_debut']);
         SceanceCour::create($input);
-        $request->session()->flash('success', 'La seance a ete crée avec succès.');
+        Alert::success('Success', 'Seance de cours ajoutée avec succès');
         return redirect()->route('seance_cours.index');
     }
 
@@ -78,10 +78,17 @@ class SceanceCourController extends Controller
      * @param  \App\Models\SceanceCour  $sceanceCour
      * @return \Illuminate\Http\Response
      */
-    public function edit(SceanceCour $sceanceCour)
+    public function edit(Request $request)
     {
-        return view('seance_cours.form', ['sceanceCour' => $sceanceCour]);
+        $id = $request->query('id');
+        $sceanceCour = SceanceCour::find($id);
+        $modules = Module::all();
+        $classes = Classe::all();
+
+        $enseignants = Enseignant::all();
+        return view('seance_cours.form', ['sceanceCour' => $sceanceCour, 'modules' => $modules, 'classes' => $classes, 'enseignants' => $enseignants]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -90,12 +97,13 @@ class SceanceCourController extends Controller
      * @param  \App\Models\SceanceCour  $sceanceCour
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSceanceCourRequest $request, SceanceCour $sceanceCour)
+    public function update(UpdateSceanceCourRequest $request)
     {
+        $sceanceCour = SceanceCour::find($request->query('id'));
         $input = $request->all();
         $sceanceCour->update($input);
-        $request->session()->flash('success', 'La seance a été modifié avec succès');
-        return redirect()->route('seance_cour.index');
+        Alert::success('La seance a été modifié avec succès');
+        return redirect()->route('seance_cours.index');
     }
 
     /**

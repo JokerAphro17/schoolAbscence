@@ -26,8 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('seance_cours/create', [SceanceCourController::class, 'create'])->name('seance_cours.create');
     Route::post('seance_cours', [SceanceCourController::class, 'store'])->name('seance_cours.store');
     Route::get('seance_cour', [SceanceCourController::class, 'show'])->name('seance_cours.show');
-    Route::get('seance_cours/{seance_cour}/edit', [SceanceCourController::class, 'edit'])->name('seance_cours.edit');
-    Route::put('seance_cours/{seance_cour}', [SceanceCourController::class, 'update'])->name('seance_cours.update');
+    Route::get('seance_cours/edit', [SceanceCourController::class, 'edit'])->name('seance_cours.edit');
+    Route::put('seance_cour', [SceanceCourController::class, 'update'])->name('seance_cours.update');
 
     Route::resource('enseignants', EnseignantController::class);
     Route::get('classes', [ClasseController::class, 'index'])->name('classes.index');

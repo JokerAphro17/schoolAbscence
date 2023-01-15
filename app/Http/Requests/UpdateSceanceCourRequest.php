@@ -23,12 +23,6 @@ class UpdateSceanceCourRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'module_id'=> 'required,'. $this->route('seancecour')->id,
-            'classe_id' => 'required,'. $this->route('seancecour')->id,
-            'enseignant_id'=> 'required,'. $this->route('seancecour')->id, 
-            'duree'=> 'required,'. $this->route('seancecour')->id,
-            'date'=> 'required,'. $this->route('seancecour')->id,  
-        ];
+        return [];
     }
 }

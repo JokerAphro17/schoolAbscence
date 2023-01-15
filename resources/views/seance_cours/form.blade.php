@@ -42,12 +42,12 @@
                                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                                     <form 
                                     @if(isset($sceanceCour))
-                                        action="{{route('seance_cours.update',$sceanceCour->id)}}"
+                                    action="{{route('seance_cours.update',['id'=>$sceanceCour->id])}}"
                                     @else
                                         action="{{route('seance_cours.store')}}"
                                     @endif 
                                     method="post">
-                                        @if(isset($module))
+                                        @if(isset($sceanceCour))
                                             @method('PUT')
                                         @endif
                                         @csrf
@@ -60,7 +60,7 @@
                                                     <select class="select2 form-control custum-select " name="module_id">
                                                         <option value="">...</option>
                                                         @foreach ($modules as $module )
-                                                            <option value="{{$module->id}}">
+                                                            <option value="{{$module->id}}" @if(isset($sceanceCour) && $sceanceCour->module_id == $module->id) selected @endif>
                                                                 {{$module->nom}}
                                                             </option>
                                                         @endforeach
@@ -75,7 +75,7 @@
                                                     <select class="select2 form-control custum-select " name="classe_id">
                                                         <option value="">...</option>
                                                         @foreach ($classes as $classe )
-                                                            <option value="{{$classe->id}}">
+                                                            <option value="{{$classe->id}}" @if(isset($sceanceCour) && $sceanceCour->classe_id == $classe->id) selected @endif>
                                                                 {{$classe->nom}}
                                                             </option>
                                                         @endforeach
@@ -109,7 +109,8 @@
                                                     <label class="form-label">
                                                     Heure de debut
                                                 </label>
-                                                <input type="text" id="example" class="form-control" name="heure_debut" autocomplete="off" />                                                
+                                                <input type="text" id="example" class="form-control" name="heure_debut" autocomplete="off" 
+                                                value="{{ Carbon\Carbon::parse($sceanceCour->heure_debut ?? old('heure_debut'))->format('H:i') }}">                                            
                                                 
                                             </div>
                                         </div>
@@ -121,7 +122,7 @@
                                                 <select class="select2 form-control custum-select " name="enseignant_id">
                                                     <option value="">...</option>
                                                     @foreach ($enseignants as $enseignant )
-                                                    <option value="{{$enseignant->id}}">
+                                                    <option value="{{$enseignant->id}}" @if(isset($sceanceCour) && $sceanceCour->enseignant_id == $enseignant->id) selected @endif>
                                                         {{$enseignant->nom}}
                                                     </option>
                                                     @endforeach
