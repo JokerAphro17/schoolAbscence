@@ -16,7 +16,7 @@ class Abscence extends Model
     ];
     // cette fonction permet de recuperer tout les eleves qui ont une absence 
 
-    public function eleves()
+    public function eleve()
     {
         return $this->belongsTo(Eleve::class);
     }
@@ -27,6 +27,6 @@ class Abscence extends Model
 
     public function seance_cour()
     {
-        return $this->belongsTo(seance_cour::class);
+        return $this->belongsTo(SceanceCour::class);
     }
 }

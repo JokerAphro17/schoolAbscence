@@ -30,6 +30,11 @@ class SceanceCour extends Model
         return $this->belongsTo(Classe::class);
     }
 
+    public function eleves()
+    {
+        return $this->belongsToMany(Eleve::class, 'abscences');
+    }
+
     public function enseignant()
     {
         return $this->belongsTo(Enseignant::class);

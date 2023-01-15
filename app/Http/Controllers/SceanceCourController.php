@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classe;
+use App\Models\Module;
+use App\Models\Enseignant;
 use App\Models\SceanceCour;
+use Illuminate\Http\Request;
+use App\Services\DateService;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreSceanceCourRequest;
 use App\Http\Requests\UpdateSceanceCourRequest;
-use App\Models\Classe;
-use App\Models\Enseignant;
-use App\Models\Module;
-use App\Services\DateService;
-use Illuminate\Http\Request;
 
 class SceanceCourController extends Controller
 {
@@ -20,7 +22,7 @@ class SceanceCourController extends Controller
      */
     public function index()
     {
-        $seance_cours = SceanceCour::latest()->paginate(1);
+        $seance_cours = SceanceCour::all();
 
         return view('seance_cours.index', ['seance_cours' => $seance_cours]);
     }
@@ -67,7 +69,6 @@ class SceanceCourController extends Controller
 
         $id = $request->query('id');
         $sceanceCour = SceanceCour::find($id);
-
         return view('seance_cours.show', ['sceanceCour' => $sceanceCour]);
     }
 
@@ -108,5 +109,14 @@ class SceanceCourController extends Controller
         $sceanceCour->delete();
 
         return redirect()->route('seance_cours.index')->with('success', 'La seance a été supprimé avec succès');
+    }
+
+    public function finishCourse(SceanceCour $sceanceCour)
+    {
+
+        $sceanceCour->etat = 1;
+        $sceanceCour->save();
+        Alert::success('La seance a été terminé avec succès', "Aucune autre abscence ne peut etre desormais enregistré pour cette seance");
+        return redirect()->route('seance_cours.index');
     }
 }

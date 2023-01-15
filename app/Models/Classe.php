@@ -32,4 +32,14 @@ class Classe extends Model
     {
         return $this->hasMany(Eleve::class);
     }
+
+    public function sceance_cours()
+    {
+        return $this->hasMany(SceanceCour::class);
+    }
+
+    public function absences()
+    {
+        return $this->hasManyThrough(Abscence::class, SceanceCour::class);
+    }
 }

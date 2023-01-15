@@ -104,13 +104,13 @@
         
 
             <!-- ROW-1 CLOSED -->
-			<div class="row justify-content-end">
+			{{-- <div class="row justify-content-end">
 				<div class="col-4">
 				  <div class="pagination">
-					 {{$modules->links()}}
+					 {{sc->links()}}
 				  </div>
 				</div>
-			</div>
+			</div> --}}
 @endsection
 @section('js')
 		<!-- INTERNAL CHARTJS CHART JS -->

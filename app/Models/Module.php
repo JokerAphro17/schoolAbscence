@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     use HasFactory, Uuid;
-    protected $fillable =[
+    protected $fillable = [
         "id",
         "code",
         "nom",
     ];
     // on recupere les les scenaces de cours d'un module
-    public function sceanceCours()
+    public function sceance_cours()
     {
         return $this->hasMany(SceanceCour::class);
     }
@@ -23,4 +23,9 @@ class Module extends Model
     protected $casts = [
         'id' => 'string',
     ];
+
+    public function absences()
+    {
+        return $this->hasManyThrough(Abscence::class, SceanceCour::class);
+    }
 }

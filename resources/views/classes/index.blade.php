@@ -48,15 +48,18 @@
 										</tr>
 									</thead>
 									<tbody>
-										
 										@foreach ($classes as $classe )
 										<tr>
 											<td>
+												<a href="{{route('classes.show', $classe->id)}}">
+													
 												{{
 													$classe->nom
 												}}
+												</a>
 											</td>
 											<td>
+												
 												{{
 													$classe->filiere->nom
 												}}
@@ -86,13 +89,7 @@
         
 
             <!-- ROW-1 CLOSED -->
-			<div class="row justify-content-end">
-				<div class="col-4">
-				  <div class="pagination">
-					 {{$classes->links()}}
-				  </div>
-				</div>
-			</div>
+			
 @endsection
 @section('js')
 		<!-- INTERNAL CHARTJS CHART JS -->

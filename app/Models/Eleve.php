@@ -26,7 +26,7 @@ class Eleve extends Model
     }
 
     // on recupere toutes les absences de l'eleve
-    public function Abscences()
+    public function absences()
     {
         return $this->hasMany(Abscence::class);
     }

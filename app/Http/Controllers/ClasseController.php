@@ -16,7 +16,7 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $classes = Classe::latest()->paginate(1);
+        $classes = Classe::all();
 
         return view('classes.index', ['classes' => $classes]);
     }
@@ -56,7 +56,17 @@ class ClasseController extends Controller
      */
     public function show(Classe $classe)
     {
-        return view('classes.show', ['classe' => $classe]);
+        $sceances = $classe->sceance_cours;
+        $absences = $classe->absences;
+        $classModules = [];
+        foreach ($sceances as $sceance) {
+            if (!in_array($sceance->module, $classModules)) {
+                $classModules[] = $sceance->module;
+            }
+        }
+
+
+        return view('classes.show', ['classe' => $classe, 'modules' => $classModules, 'absences' => $absences]);
     }
 
     /**

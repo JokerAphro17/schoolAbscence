@@ -6,6 +6,8 @@ use App\Models\Abscence;
 use App\Http\Requests\StoreAbscenceRequest;
 use App\Http\Requests\UpdateAbscenceRequest;
 use App\Models\Classe;
+use App\Models\SceanceCour;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AbscenceController extends Controller
 {
@@ -16,9 +18,9 @@ class AbscenceController extends Controller
      */
     public function index()
     {
-        $abscences = Abscence::all()->paginate(5);
+        $seance_cours = SceanceCour::all();
 
-        return view('abscences.index', ['abscences' => $abscences]);
+        return view('seance_cours.index', ['seance_cours' => $seance_cours]);
     }
 
     /**
@@ -40,13 +42,24 @@ class AbscenceController extends Controller
     public function store(StoreAbscenceRequest $request)
     {
         $input = $request->all();
-        $abscents = $input['abscences'];
+        $abscents = $input['abscences'] ?? [];
+
         foreach ($abscents as $abscent) {
-            $input['eleve_id'] = $abscent;
-            Abscence::create($input);
+
+            if (!Abscence::where('sceance_cour_id', $input['sceance_cour_id'])->where('eleve_id', $abscent)->exists()) {
+                $input['eleve_id'] = $abscent;
+                Abscence::create($input);
+            }
         }
 
-        $request->session()->flash('success', 'Abscence created successfully.');
+        $all_abscent = Abscence::where('sceance_cour_id', $input['sceance_cour_id'])->get();
+        foreach ($all_abscent as $abscent) {
+            if (!in_array($abscent->eleve_id, $abscents)) {
+                $abscent->delete();
+            }
+        }
+        Alert::success('Abscence', 'Abscence enregistrée avec succès');
+
         return redirect()->route('abscences.index');
     }
 

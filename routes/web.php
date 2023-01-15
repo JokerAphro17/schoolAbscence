@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('eleves/{eleve}', [EleveController::class, 'update'])->name('eleves.update');
     Route::delete('eleves/{eleve}', [EleveController::class, 'destroy'])->name('eleves.destroy');
     Route::resource('abscences', AbscenceController::class);
+    Route::get('sceance/finished/{sceance_cour}', [SceanceCourController::class, 'finishCourse'])->name('sceance.finished');
 });
 
 
