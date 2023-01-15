@@ -32,11 +32,11 @@
 								</h5>
 							@else
 							<div class="table-responsive">
-								<table id="data-table1" class="table table-striped table-bordered text-nowrap w-100">
+								<table id="table" class="table table-striped table-bordered text-nowrap w-100">
 									<thead>
 										<tr>
 											<th class="wd-15p">Module</th>
-											<th class="wd-15p">seance_cour</th>
+											<th class="wd-15p">Classe</th>
 											<th class="wd-15p">Enseignant</th>
 											<th class="wd-15p">durée</th>
 											<th class="wd-15p">date</th>
@@ -106,6 +106,26 @@
 			</div> --}}
 @endsection
 @section('js')
+<script>
+	$(document).ready(function() {
+		$('#table').DataTable({
+			"language": {
+				"lengthMenu": "Afficher _MENU_ enregistrements par page",
+				"zeroRecords": "Aucun enregistrement trouvé",
+				"info": "Affichage de la page _PAGE_ sur _PAGES_",
+				"infoEmpty": "Aucun enregistrement disponible",
+				"infoFiltered": "(filtré à partir de _MAX_ enregistrements au total)",
+				"search": "Rechercher",
+				"paginate": {
+					"first": "Premier",
+					"last": "Dernier",
+					"next": "Suivant",
+					"previous": "Précédent"
+				},
+			}
+		});
+	});
+</script>
 		<!-- INTERNAL CHARTJS CHART JS -->
 		<script src="{{URL::asset('assets/plugins/chart/Chart.bundle.js')}}"></script>
 		<script src="{{URL::asset('assets/plugins/chart/utils.js')}}"></script>

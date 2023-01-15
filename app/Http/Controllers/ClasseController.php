@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
+use App\Models\Filiere;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreClasseRequest;
 use App\Http\Requests\UpdateClasseRequest;
-use App\Models\Filiere;
 
 class ClasseController extends Controller
 {
@@ -44,7 +45,7 @@ class ClasseController extends Controller
         $input = $request->all();
 
         Classe::create($input);
-        $request->session()->flash('success', 'Classe created successfully.');
+        Alert::sucess('success', 'Classe enregistré avec succès.');
         return redirect()->route('classes.index');
     }
 
@@ -92,7 +93,7 @@ class ClasseController extends Controller
     {
         $input = $request->all();
         $classe->update($input);
-        $request->session()->flash('success', 'La Classe a été modifié avec succès');
+       Alert::sucess('success', 'La Classe a été modifié avec succès');
         return redirect()->route('classes.index');
     }
 

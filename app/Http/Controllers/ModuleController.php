@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Module;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreModuleRequest;
 use App\Http\Requests\UpdateModuleRequest;
 
@@ -15,7 +16,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::latest()->paginate(1);
+        $modules = Module::all();
 
         return view('modules.index', ['modules' => $modules]);
     }
@@ -41,7 +42,7 @@ class ModuleController extends Controller
         $input = $request->all();
 
         Module::create($input);
-        $request->session()->flash('success', 'Le module a ete crée avec succès.');
+        Alert::sucess('success', 'Le module a ete crée avec succès.');
         return redirect()->route('modules.index');
     }
 
@@ -78,7 +79,7 @@ class ModuleController extends Controller
     {
         $input = $request->all();
         $module->update($input);
-        $request->session()->flash('success', 'module a été modifié avec succès');
+        Alert::sucess('success', 'module a été modifié avec succès');
         return redirect()->route('modules.index');
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Filiere;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreFiliereRequest;
 use App\Http\Requests\UpdateFiliereRequest;
 
@@ -15,7 +16,7 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        $filieres = Filiere::latest()->paginate(1);
+        $filieres = Filiere::all();
 
         return view('filieres.index', ['filieres' => $filieres]);
     }
@@ -41,7 +42,7 @@ class FiliereController extends Controller
         $input = $request->all();
 
         Filiere::create($input);
-        $request->session()->flash('success', 'Filiere created successfully.');
+        Alert::sucess('success', 'Filiere created successfully.');
         return redirect()->route('filieres.index');
     }
 
@@ -80,7 +81,7 @@ class FiliereController extends Controller
 
         $input = $request->all();
         $filiere->update($input);
-        $request->session()->flash('success', 'Filiere a été modifié avec succès');
+        Alert::sucess('success', 'Filiere a été modifié avec succès');
         return redirect()->route('filieres.index');
     }
 

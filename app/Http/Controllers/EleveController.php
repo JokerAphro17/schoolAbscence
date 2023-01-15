@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Eleve;
-use App\Http\Requests\StoreEleveRequest;
-use App\Http\Requests\UpdateEleveRequest;
 use App\Models\Classe;
+use App\Http\Requests\StoreEleveRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\UpdateEleveRequest;
 
 class EleveController extends Controller
 {
@@ -16,7 +17,7 @@ class EleveController extends Controller
      */
     public function index()
     {
-        $eleves = Eleve::latest()->paginate(5);
+        $eleves = Eleve::all();
         return view('eleves.index', ['eleves' => $eleves]);
     }
 
@@ -42,7 +43,7 @@ class EleveController extends Controller
         $input = $request->all();
 
         Eleve::create($input);
-        $request->session()->flash('success', 'Eleve enregistré avec succès.');
+        Alert::sucess('success', 'Eleve enregistré avec succès.');
         return redirect()->route('eleves.index');
     }
 

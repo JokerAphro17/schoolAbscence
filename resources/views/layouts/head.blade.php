@@ -32,4 +32,4 @@
 
 		<!-- COLOR SKIN CSS -->
 		<link id="theme" rel="stylesheet" type="text/css" media="all" href="{{URL::asset('assets/colors/color1.css')}}" />
-		<link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+		<link href="{{URL::asset('assets/plugins/jquerydatatable/jquery.dataTables.min.css')}}" rel="stylesheet" />

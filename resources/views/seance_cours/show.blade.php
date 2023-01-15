@@ -2,13 +2,6 @@
 @section('page-header')
 			<!-- PAGE-HEADER -->
 			<div class="page-header">
-				<div>
-					<h1 class="page-title">Salut! Bienvenu dans notre application de Gestion des Absences</h1>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Sales Dashboard</li>
-					</ol>
-				</div>
 				<div class="ml-auto pageheader-btn">
 					
 					<div class="btn-list">

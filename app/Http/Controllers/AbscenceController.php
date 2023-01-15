@@ -95,6 +95,7 @@ class AbscenceController extends Controller
     public function update(UpdateAbscenceRequest $request, Abscence $abscence)
     {
         $input = $request->all();
+        Alert::sucess('success', 'Absence a été modifié avec succès');
         return redirect()->route('abscences.index');
     }
 

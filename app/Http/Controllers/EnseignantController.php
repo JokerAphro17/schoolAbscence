@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enseignant;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreEnseignantRequest;
 use App\Http\Requests\UpdateEnseignantRequest;
 
@@ -15,7 +16,7 @@ class EnseignantController extends Controller
      */
     public function index()
     {
-        $enseignants = Enseignant::latest()->paginate(1);
+        $enseignants = Enseignant::all();
 
         return view('enseignants.index', ['enseignants' => $enseignants]);
     }
@@ -41,7 +42,7 @@ class EnseignantController extends Controller
         $input = $request->all();
 
         Enseignant::create($input);
-        $request->session()->flash('success', 'Enseignant created successfully.');
+        Alert::sucess('success', 'Enseignant created successfully.');
         return redirect()->route('enseignants.index');
     }
 
@@ -78,7 +79,7 @@ class EnseignantController extends Controller
     {
         $input = $request->all();
         $enseignant->update($input);
-        $request->session()->flash('success', 'Enseignant a été modifié avec succès');
+        Alert::sucess('success', 'Enseignant a été modifié avec succès');
         return redirect()->route('enseignants.index');
     }
 

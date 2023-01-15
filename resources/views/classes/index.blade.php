@@ -2,13 +2,6 @@
 @section('page-header')
 			<!-- PAGE-HEADER -->
 			<div class="page-header">
-				<div>
-					<h1 class="page-title">Salut! Bienvenu dans notre application de Gestion des Absences</h1>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Sales Dashboard</li>
-					</ol>
-				</div>
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
 						<a href="{{route('classes.create')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
@@ -39,7 +32,7 @@
 								</h5>
 							@else
 							<div class="table-responsive">
-								<table id="data-table1" class="table table-striped table-bordered text-nowrap w-100">
+								<table id="table" class="table table-striped table-bordered text-nowrap w-100">
 									<thead>
 										<tr>
 											<th class="wd-15p">Nom du classe</th>
@@ -92,6 +85,26 @@
 			
 @endsection
 @section('js')
+<script>
+	$(document).ready(function() {
+		$('#table').DataTable({
+			"language": {
+				"lengthMenu": "Afficher _MENU_ enregistrements par page",
+				"zeroRecords": "Aucun enregistrement trouvé",
+				"info": "Affichage de la page _PAGE_ sur _PAGES_",
+				"infoEmpty": "Aucun enregistrement disponible",
+				"infoFiltered": "(filtré à partir de _MAX_ enregistrements au total)",
+				"search": "Rechercher",
+				"paginate": {
+					"first": "Premier",
+					"last": "Dernier",
+					"next": "Suivant",
+					"previous": "Précédent"
+				},
+			}
+		});
+	});
+</script>
 		<!-- INTERNAL CHARTJS CHART JS -->
 		<script src="{{URL::asset('assets/plugins/chart/Chart.bundle.js')}}"></script>
 		<script src="{{URL::asset('assets/plugins/chart/utils.js')}}"></script>
