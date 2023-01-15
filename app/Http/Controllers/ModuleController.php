@@ -42,7 +42,7 @@ class ModuleController extends Controller
         $input = $request->all();
 
         Module::create($input);
-        Alert::sucess('success', 'Le module a ete crée avec succès.');
+        Alert::success('success', 'Le module a ete crée avec succès.');
         return redirect()->route('modules.index');
     }
 
@@ -79,7 +79,7 @@ class ModuleController extends Controller
     {
         $input = $request->all();
         $module->update($input);
-        Alert::sucess('success', 'module a été modifié avec succès');
+        Alert::success('success', 'module a été modifié avec succès');
         return redirect()->route('modules.index');
     }
 

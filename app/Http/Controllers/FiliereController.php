@@ -42,7 +42,7 @@ class FiliereController extends Controller
         $input = $request->all();
 
         Filiere::create($input);
-        Alert::sucess('success', 'Filiere created successfully.');
+        Alert::success('success', 'Filiere created successfully.');
         return redirect()->route('filieres.index');
     }
 
@@ -81,7 +81,7 @@ class FiliereController extends Controller
 
         $input = $request->all();
         $filiere->update($input);
-        Alert::sucess('success', 'Filiere a été modifié avec succès');
+        Alert::success('success', 'Filiere a été modifié avec succès');
         return redirect()->route('filieres.index');
     }
 

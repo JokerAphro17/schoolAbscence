@@ -24,10 +24,7 @@ class StoreEnseignantRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom'=> 'required',
-            'prenom' => 'required',
-            'email'=> 'required|unique:enseignants,email', 
-            'telephone'=> 'required', 
+            
         ];
     }
 }

@@ -24,8 +24,7 @@ class StoreModuleRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'=> 'required|unique:modules,code',
-            'nom' => 'required|unique:modules,nom',
+            
         ];
     }
 }

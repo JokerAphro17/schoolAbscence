@@ -42,7 +42,7 @@ class EnseignantController extends Controller
         $input = $request->all();
 
         Enseignant::create($input);
-        Alert::sucess('success', 'Enseignant created successfully.');
+        Alert::success('success', 'Enseignant created successfully.');
         return redirect()->route('enseignants.index');
     }
 
@@ -79,7 +79,7 @@ class EnseignantController extends Controller
     {
         $input = $request->all();
         $enseignant->update($input);
-        Alert::sucess('success', 'Enseignant a été modifié avec succès');
+        Alert::success('success', 'Enseignant a été modifié avec succès');
         return redirect()->route('enseignants.index');
     }
 

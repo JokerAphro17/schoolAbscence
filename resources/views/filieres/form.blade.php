@@ -59,14 +59,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group
-                                        ">
-                                            <label class="form-label
-                                            ">Description</label>
-                                            <textarea class="form-control" 
-                                            
-                                            name="description" placeholder="Description de la filière"></textarea>
-                                        </div>
                                         <div class="row justify-content-between">
                                             <div class=" col-md-6 ">
                                                 <button type="submit" class="btn btn-outline-primary">Enregistrer   </button>

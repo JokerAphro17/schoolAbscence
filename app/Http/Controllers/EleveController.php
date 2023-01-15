@@ -43,7 +43,7 @@ class EleveController extends Controller
         $input = $request->all();
 
         Eleve::create($input);
-        Alert::sucess('success', 'Eleve enregistré avec succès.');
+        Alert::success('success', 'Eleve enregistré avec succès.');
         return redirect()->route('eleves.index');
     }
 
@@ -82,7 +82,7 @@ class EleveController extends Controller
         $input = $request->all();
 
         $eleve->update($input);
-        $request->session()->flash('success', 'Eleve modifié avec succès.');
+        Alert::success('success', 'Eleve modifié avec succès.');
         return redirect()->route('eleves.index');
     }
 

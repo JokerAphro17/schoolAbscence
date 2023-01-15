@@ -45,7 +45,7 @@ class ClasseController extends Controller
         $input = $request->all();
 
         Classe::create($input);
-        Alert::sucess('success', 'Classe enregistré avec succès.');
+        Alert::success('success', 'Classe enregistré avec succès.');
         return redirect()->route('classes.index');
     }
 
@@ -93,7 +93,7 @@ class ClasseController extends Controller
     {
         $input = $request->all();
         $classe->update($input);
-       Alert::sucess('success', 'La Classe a été modifié avec succès');
+       Alert::success('success', 'La Classe a été modifié avec succès');
         return redirect()->route('classes.index');
     }
 
