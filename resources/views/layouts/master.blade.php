@@ -26,6 +26,7 @@
 				<div class="page">
 					<div class="page-main">
 						@include('layouts.aside-menu')
+						@include('sweetalert::alert')
 						@include('layouts.header')
 						<!--app-content open-->
 						<div class="app-content">

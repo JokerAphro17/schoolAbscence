@@ -10,32 +10,24 @@
 					</ol>
 				</div>
 				<div class="ml-auto pageheader-btn">
+					
 					<div class="btn-list">
-						<a href="#" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						@if($sceanceCour->etat == 0)
+
+						<a href="{{route('sceance.finished',$sceanceCour)}}" class="btn btn-danger btn-icon " >
 							<span>
-								<i class="fe fe-shopping-cart"></i>
+								Terminer la prise d'absence
+								<i class="fe fe-check-circle"></i>
 							</span>
 						</a>
-						<a href="#" class="btn btn-orange btn-icon text-white" data-toggle="tooltip" title="Download" data-placement="top">
+						@else
+						<a href="#" class="btn btn-success btn-icon text-white" >
 							<span>
-								<i class="fe fe-download"></i>
+								Scéance terminée !
+								<i class="fe fe-check-circle"></i>
 							</span>
 						</a>
-						<a href="#" class="btn btn-info btn-icon text-white" data-toggle="tooltip" title="Add User" data-placement="top">
-							<span>
-								<i class="fe fe-plus"></i>
-							</span>
-						</a>
-						<a href="#" class="btn btn-secondary btn-icon text-white dropdown-toggle" data-toggle="dropdown">
-							<span>
-								<i class="fe fe-external-link"></i>
-							</span> Export <span class="caret"></span>
-						</a>
-						<div class="dropdown-menu" role="menu">
-							<a href="#" class="dropdown-item"><i class="bx bxs-file-pdf mr-2"></i>Export as Pdf</a>
-							<a href="#" class="dropdown-item"><i class="bx bxs-file-image mr-2"></i>Export as Image</a>
-							<a href="#" class="dropdown-item"><i class="bx bxs-file mr-2"></i>Export as Excel</a>
-						</div>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -91,7 +83,16 @@
 										<td>{{ $eleve->date_naissance }}</td>
 										
 										<td>
-											<input type="checkbox" name="abscences[]" value="{{ $eleve->id }}">
+											<input type="checkbox" 
+											
+											{{
+												$eleve->absences->where("sceance_cour_id", $sceanceCour->id)->count() > 0 ? "checked" : ""
+											}}
+
+											{{
+												$sceanceCour->etat == 1 ? "disabled" : ""
+											}}
+											name="abscences[]" value="{{ $eleve->id }}">
 										</td>
 									</tr>
 								@empty
@@ -104,11 +105,13 @@
 
 					</div>
 				</div>
+				@if ($sceanceCour->etat == 0)
 				<div class="row justify-content-end p-3">
 					<div class="col-md-4 offset-8 justify-content-end d-flex">
 						<button type="submit" class="btn btn-primary">Enregistrer</button>
 					</div>
 				</div>
+				@endif
 			</div>
 		</div>
 		</form>

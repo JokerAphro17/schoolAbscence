@@ -44,11 +44,171 @@
 @section('content')
 			<!-- ROW-1 -->
 
-        
+			<div class="card">
+				<div class="card-body">
+	
+					<div class="row">
+						<div class="col-6">
+							Information 1
+						</div>
+						<div class="col-6">
+							Information 2
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+						<h3>Les modules de la classe</h3>
+							@foreach($modules as $module)
+								  <div class="card-header d-flex .data0{{$module->id}} justify-content-between"  id="headingOne{{$module->id}}">
+									<h5 class="mb-0">
+									  
+										{{$module->nom}}
+									</h5>
+									<div>
+										<button class="btn  btn-tab btn-primary btn-sm"
+										id="{{$module->id}}"
+										>
+										<i class="fa fa-eye"></i>
+										Voir les absences
+									</button>
+									<button class="btn  btn-auth btn-danger btn-sm"
+										id="a{{$module->id}}"
+									>
+										<i class="fa fa-eye"></i>
+										Eleves non autorisés 
+									</button>
+								</div>
+								</div>
+
+										@php
+											$abscence = $module->absences;
+											$eleves=[];
+										foreach ($abscence as $absence) {
+											if(!in_array($absence->eleve,$eleves))
+											{$eleves[] = $absence->eleve;}
+										}
+							
+										@endphp
+										
+										<table class="table table-bordered d-none table-hover" 
+										id="tab{{$module->id}}"
+										>
+											<thead>
+												<tr>
+													<th>INE</th>
+													<th>Nom</th>
+													<th>Prénom</th>
+													<th>Nombre d'absence</th>
+												</tr>
+											</thead>
+											<tbody>
+												@foreach($eleves as $eleve)
+													<tr>
+														<td>{{$eleve->ine}}
+														<td>{{$eleve->nom}}</td>
+														<td>{{$eleve->prenom}}</td>
+														@php
+														$nb_absence = 0;
+															$absences = $eleve->absences;
+															$seances = [];
+															foreach ($absences as $absence) {
+																$seances[] = App\Models\SceanceCour::find($absence->sceance_cour_id);
+															}
+															
+															foreach ($seances as $seance) {
+																if($seance->module->id == $module->id){
+																	$nb_absence++;
+																}
+															}
+														@endphp
+														<td>{{$nb_absence}}</td>
+														
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+										<table class="table table-bordered d-none table-hover" 
+										id="taba{{$module->id}}"
+										>
+											<thead>
+												<tr>
+													<th>INE</th>
+													<th>Nom</th>
+													<th>Prénom</th>
+												</tr>
+											</thead>
+											<tbody>
+											
+												@foreach($eleves as $eleve)
+												@php
+												$nb_absence = 0;
+													$absences = $eleve->absences;
+													$seances = [];
+													foreach ($absences as $absence) {
+														$seances[] = App\Models\SceanceCour::find($absence->sceance_cour_id);
+													}
+													
+													foreach ($seances as $seance) {
+														if($seance->module->id == $module->id){
+															$nb_absence++;
+														}
+													}
+												@endphp
+												@if($nb_absence >= 3)
+													<tr>
+														<td>{{$eleve->ine}}
+														<td>{{$eleve->nom}}</td>
+														<td>{{$eleve->prenom}}</td>														
+													</tr>
+												@endif
+												@endforeach
+											</tbody>
+										</table>
+								
+							@endforeach
+				</div>
+			</div>
+
+
+								
 
             <!-- ROW-1 CLOSED -->
 @endsection
 @section('js')
+			<script>
+				var btns = document.querySelectorAll('.btn-tab');
+				btns.forEach(btn => {
+					btn.addEventListener('click', function() {
+						$btnId = this.id;
+						$tabId = 'tab'+$btnId;
+						$tab = document.getElementById($tabId);
+						$tab.classList.toggle('show');
+						$tab.classList.toggle('d-none');
+						$data = document.getElementById('taba'+$btnId);
+						$data.classList.add('d-none');
+					});
+				});
+				var btns_auth = document.querySelectorAll('.btn-auth');
+				btns_auth.forEach(btn => {
+					btn.addEventListener('click', function() {
+						$btnId = this.id;
+						$tabId = 'tab'+$btnId;
+						$tab = document.getElementById($tabId);
+						$tab.classList.toggle('show');
+						$tab.classList.toggle('d-none');
+						$btn_id = $btnId.slice(1, $btnId.length);
+						$data = document.getElementById('tab'+$btn_id);
+						$data.classList.add('d-none');
+						
+						
+					});
+				});
+
+			</script>
+
 		<!-- INTERNAL CHARTJS CHART JS -->
 		<script src="{{URL::asset('assets/plugins/chart/Chart.bundle.js')}}"></script>
 		<script src="{{URL::asset('assets/plugins/chart/utils.js')}}"></script>
