@@ -34,10 +34,35 @@
 
 				<div class="row">
 					<div class="col-6">
-						Information 1
+						<h4>Informations sur la scéance</h4>
+						<dl class="row">
+							<dt class="col-sm-3">Date :</dt>
+							<dd class="col-sm-9">{{ Carbon\Carbon::parse($sceanceCour->date)->format('d/m/Y') }}</dd>
+							<dt class="col-sm-3">Heure de début :</dt>
+							<dd class="col-sm-9">{{ Carbon\Carbon::parse($sceanceCour->heure_debut)->format('H:i') }}</dd>
+							<dt class="col-sm-3">Duree :</dt>
+							<dd class="col-sm-9">{{ $sceanceCour->duree }}H</dd>
+							<dt class="col-sm-3">
+								@if($sceanceCour->etat == 0)
+								<span class="badge badge-warning">Encours </span>
+								@else
+								<span class="badge badge-success">Terminée</span>
+								@endif
+							</dt>
+							<dd class="col-sm-9"></dd>
+						</dl>
 					</div>
 					<div class="col-6">
-						Information 2
+						<h4>Informations sur la classe</h4>
+						<dl class="row">
+							<dt class="col-sm-3">Nom :</dt>
+							<dd class="col-sm-9">{{ $sceanceCour->classe->nom }}</dd>
+							
+							<dt class="col-sm-3">Filière :</dt>
+							<dd class="col-sm-9">{{ $sceanceCour->classe->filiere->nom }}</dd>
+							<dt class="col-sm-3">Nb d'élèves :</dt>
+							<dd class="col-sm-9">{{ $sceanceCour->classe->eleves->count() }}</dd>
+						</dl>
 					</div>
 				</div>
 			</div>
