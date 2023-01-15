@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Abscence;
+use App\Models\Classe;
+use App\Models\Eleve;
+use App\Models\Filiere;
+use App\Models\Module;
+use App\Models\SceanceCour;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,8 +19,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-
-        return view('index');
+        $classes = Classe::all()->count();
+        $absences = Abscence::all()->count();
+        $eleves = Eleve::all()->count();
+        $filieres = Filiere::all()->count();
+        $modules = Module::all()->count();
+        return view('index', ['classes' => $classes, 'absences' => $absences, 'eleves' => $eleves, 'filieres' => $filieres, 'modules' => $modules]);
         //   return view($id);
     }
 

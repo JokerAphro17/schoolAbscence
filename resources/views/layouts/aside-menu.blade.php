@@ -8,10 +8,10 @@
 					</div>
 					<ul class="side-menu">
 						<li>
-							<h3>Main</h3>
+							<h3>Acceuil</h3>
 						</li>
 						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#">
+							<a class="side-menu__item" data-toggle="slide" href="/">
 								<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class="side-menu__icon">
 									<path d="M0 0h24v24H0V0z" fill="none" />
 									<path d="M3 4h18v10H3z" opacity=".3" />
