@@ -76,7 +76,7 @@
 					</div>
 				</div>
 			</div>
-        
+
 
             <!-- ROW-1 CLOSED -->
 			<div class="row justify-content-end">

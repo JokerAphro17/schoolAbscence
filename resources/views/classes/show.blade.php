@@ -86,44 +86,36 @@
 											if(!in_array($absence->eleve,$eleves))
 											{$eleves[] = $absence->eleve;}
 										}
-							
+
+										
 										@endphp
 										
-										<table id="table" class="table table-bordered d-none table-hover" 
+										<table  class="table table-bordered d-none table-hover" 
 										id="tab{{$module->id}}"
 										>
+										
 											<thead>
 												<tr>
 													<th>INE</th>
 													<th>Nom</th>
 													<th>Prénom</th>
-													<th>Nombre d'absence</th>
+												
 												</tr>
 											</thead>
 											<tbody>
-												@foreach($eleves as $eleve)
+												@forelse($eleves as $eleve)
 													<tr>
 														<td>{{$eleve->ine}}
 														<td>{{$eleve->nom}}</td>
 														<td>{{$eleve->prenom}}</td>
-														@php
-														$nb_absence = 0;
-															$absences = $eleve->absences;
-															$seances = [];
-															foreach ($absences as $absence) {
-																$seances[] = App\Models\SceanceCour::find($absence->sceance_cour_id);
-															}
-															
-															foreach ($seances as $seance) {
-																if($seance->module->id == $module->id){
-																	$nb_absence++;
-																}
-															}
-														@endphp
-														<td>{{$nb_absence}}</td>
+														
 														
 													</tr>
-												@endforeach
+												@empty
+												<tr>
+													<td colspan="3" class="text-center">Aucun élève trouvé</td>
+												</tr>
+												@endforelse
 											</tbody>
 										</table>
 										<table class="table table-bordered d-none table-hover" 
@@ -138,7 +130,7 @@
 											</thead>
 											<tbody>
 											
-												@foreach($eleves as $eleve)
+												@forelse($eleves as $eleve)
 												@php
 												$nb_absence = 0;
 													$absences = $eleve->absences;
@@ -153,14 +145,18 @@
 														}
 													}
 												@endphp
-												@if($nb_absence >= 3)
+													@if($nb_absence >= 3)
 													<tr>
 														<td>{{$eleve->ine}}
 														<td>{{$eleve->nom}}</td>
 														<td>{{$eleve->prenom}}</td>														
 													</tr>
 												@endif
-												@endforeach
+												@empty
+												<tr>
+													<td colspan="3" class="text-center">Aucun élève non autorisé</td>
+												</tr>
+												@endforelse
 											</tbody>
 										</table>
 								
@@ -179,7 +175,9 @@
 				btns.forEach(btn => {
 					btn.addEventListener('click', function() {
 						$btnId = this.id;
+						
 						$tabId = 'tab'+$btnId;
+						
 						$tab = document.getElementById($tabId);
 						$tab.classList.toggle('show');
 						$tab.classList.toggle('d-none');

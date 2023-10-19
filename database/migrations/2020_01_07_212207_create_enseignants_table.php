@@ -17,7 +17,7 @@ class CreateEnseignantsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('telephone')->nullable();
             $table->string('adresse')->nullable();
             $table->timestamps();

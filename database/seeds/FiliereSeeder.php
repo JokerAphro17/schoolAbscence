@@ -38,7 +38,52 @@ class FiliereSeeder extends Seeder
                 $classes=Classe::all();
         foreach($classes as $classe){
             Eleve::factory(20)->create(['classe_id'=>$classe->id]);
-        };    
+        };
+
+      
+
+       
+            \App\Models\Enseignant::create([
+                'nom' => 'Zakaria',
+                'prenom' => 'Zakaria',
+                'email' => 'zakaria@m.com',
+                'telephone' => '0000000000',
+                'adresse' => 'zakaria',
+
+            ]
+        );
+            
+        
+
+        $modules = [
+            [
+                'code'=> '5426',
+                'nom'=> 'Programmation web'
+            ],
+            [
+                'code'=> '5427',
+                'nom'=> 'Programmation mobile'
+            ]
+        ];
+        
+
+        foreach ($modules as $module) {
+            \App\Models\Module::create($module);
+        }
+
+        $enseignants = \App\Models\Enseignant::all();
+
+        // cretae for each module a SceanceCourse with a random enseignant
+        foreach (\App\Models\Module::all() as $module) {
+            \App\Models\SceanceCour::create([
+                'module_id' => $module->id,
+                'enseignant_id' => $enseignants->random()->id,
+                'classe_id' => $classes->random()->id,
+                'date' => now(),
+                'heure_debut' => '08:00',
+                'duree' => 2,
+            ]);
+        }
     }
 }
 }
