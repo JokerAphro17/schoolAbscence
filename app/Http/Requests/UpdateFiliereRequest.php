@@ -24,6 +24,7 @@ class UpdateFiliereRequest extends FormRequest
     public function rules()
     {
         return [
+            'nom'=> 'required|unique:filieres,nom,'. $this->route('filiere')->id,
         ];
     }
 }

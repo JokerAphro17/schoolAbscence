@@ -85,30 +85,6 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
                                         
-                                                <div class="form-group">
-                                                    <label class="form-label">
-                                                        Date de naissance
-                                                    </label>
-                                                    <input type="date" class="form-control"
-                                                    value="{{$eleve->date_naissance ?? old('date_naissance')}}"
-                                                     name="date_naissance" placeholder="Renseigne la date de naissance">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="form-label
-                                                    ">
-                                                        Lieu de naissance
-                                                    </label>
-                                                    <input type="text" class="form-control"
-                                                    value="{{$eleve->lieu_naissance ?? old('lieu_naissance')}}"
-                                                     name="lieu_naissance" placeholder="Renseignez le lieu de naissance">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-                                        
                                                 <div class="form-group
                                                 ">
                                                     <label class="form-label
@@ -133,6 +109,31 @@
                                                             <option value="{{$classe->id}}" @if(isset($eleve) && $eleve->classe_id == $classe->id) selected @endif>{{$classe->nom}}</option>
                                                         @endforeach
                                                     </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                                        
+                                                <div class="form-group">
+                                                    <label class="form-label">
+                                                        Date de naissance
+                                                    </label>
+                                                    <input type="date" class="form-control"
+                                                    value="{{$eleve->date_naissance ?? old('date_naissance')}}"
+                                                     name="date_naissance" placeholder="Renseigne la date de naissance">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label
+                                                    ">
+                                                        Lieu de naissance
+                                                    </label>
+                                                    <input type="text" class="form-control"
+                                                    value="{{$eleve->lieu_naissance ?? old('lieu_naissance')}}"
+                                                     name="lieu_naissance" placeholder="Renseignez le lieu de naissance">
                                                 </div>
                                             </div>
                                         </div>
