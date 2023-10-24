@@ -11,6 +11,12 @@
                                 Nouvel élève
 							</span>
 						</a>
+						<a href="#"  id="excel" class="btn btn-orange btn-icon text-white" data-toggle="tooltip" title="Download" data-placement="top">
+							<span>
+								<i class="fe fe-excel"></i>	
+								Importer une liste
+							</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -132,4 +138,47 @@
 
 		<!--INTERNAL  INDEX JS -->
 		<script src="{{URL::asset('assets/js/index1.js')}}"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('#excel').click(function() {
+					// create a file input and click on it
+					var excel = document.createElement("input");
+					excel.type = "file";
+					excel.accept = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel";
+					excel.click();
+					// listen to the file upload change event and get the file
+					excel.addEventListener("change", function() {
+						var file = excel.files[0];
+						if (file) {
+							// send the file to the server via XHR and FormData
+							var formData = new FormData();
+							formData.append("file", file);
+							formData.append("_token", "{{ csrf_token() }}");
+							fetch("{{ route('eleves.import') }}", {
+								method: "POST",
+								body: formData
+							}).then(response => {
+								if (response.ok) {
+									return response.json();
+								} else {
+									return Promise.reject("something went wrong!");
+								}
+							}).then(data => {
+								console.log(data);
+								if (data.success) {
+									alert(data.success);
+									window.location.reload();
+								} else if (data.error) {
+									alert(data.error);
+								}
+							}).catch(error => {
+								console.error(error);
+							});
+						}
+					});
+				});
+			});
+
+		</script>
 @endsection 

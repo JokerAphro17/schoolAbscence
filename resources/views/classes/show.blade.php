@@ -122,7 +122,8 @@
 										id="taba{{$module->id}}"
 										>
 											<thead>
-												<tr>
+												<tr
+													
 													<th>INE</th>
 													<th>Nom</th>
 													<th>Prénom</th>

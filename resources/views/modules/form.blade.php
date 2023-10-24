@@ -55,6 +55,9 @@
                                                     value="{{$module->code ?? old('code')}}"
                                                      name="code" placeholder="Renseignez le code du module">
                                                 </div>
+                                                @error('code')
+                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
 												<div class="form-group">
@@ -65,6 +68,9 @@
                                                     value="{{$module->nom ?? old('nom')}}"
                                                     name="nom" placeholder="Renseignez le nom du module">
                                                 </div>
+                                                @error('nom')
+                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="row justify-content-between">

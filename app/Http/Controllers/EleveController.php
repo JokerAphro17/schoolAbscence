@@ -7,6 +7,12 @@ use App\Models\Classe;
 use App\Http\Requests\StoreEleveRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\UpdateEleveRequest;
+use Maatwebsite\Excel\Facades\Excel; 
+use Illuminate\Http\Request;
+
+use App\Exports\ExportEleve;
+use App\Imports\ImportEleve;
+
 
 class EleveController extends Controller
 {
@@ -95,6 +101,21 @@ class EleveController extends Controller
     public function destroy(Eleve $eleve)
     {
         $eleve->delete();
+        return redirect()->route('eleves.index');
+    }
+
+    // importation excel
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+ 
+        Excel::import(new ImportEleve, $file);
+
+        Alert::success('success', 'Eleves importés avec succès.');
         return redirect()->route('eleves.index');
     }
 }

@@ -46,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('eleves/{eleve}', [EleveController::class, 'destroy'])->name('eleves.destroy');
     Route::resource('abscences', AbscenceController::class);
     Route::get('sceance/finished/{sceance_cour}', [SceanceCourController::class, 'finishCourse'])->name('sceance.finished');
+
+    Route::post('import-eleves', [EleveController::class, 'import'])->name('eleves.import');
 });
 
 
