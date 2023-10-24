@@ -58,11 +58,13 @@ class FiliereSeeder extends Seeder
         $modules = [
             [
                 'code'=> '5426',
-                'nom'=> 'Programmation web'
+                'nom'=> 'Programmation web',
+                'nombre_heures' =>30
             ],
             [
                 'code'=> '5427',
-                'nom'=> 'Programmation mobile'
+                'nom'=> 'Programmation mobile',
+                'nombre_heures' =>30
             ]
         ];
         

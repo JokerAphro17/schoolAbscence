@@ -72,6 +72,16 @@
                                                     <div class="alert alert-danger">{{$message}}</div>
                                                 @enderror
                                             </div>
+                                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+												<div class="form-group">
+                                                    <label class="form-label">
+														Nombres d'heures
+													</label>
+                                                    <input type="text" class="form-control"
+                                                    value="{{$module->nombre_heures}}"
+                                                    name="nombre_heures" placeholder="Renseignez le nombres d'heures">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class=" col-md-6 ">

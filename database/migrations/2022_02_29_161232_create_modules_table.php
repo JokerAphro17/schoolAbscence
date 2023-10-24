@@ -17,6 +17,7 @@ class CreateModulesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('code');
             $table->string('nom');
+            $table->integer('nombre_heures');
             $table->timestamps();
         });
     }

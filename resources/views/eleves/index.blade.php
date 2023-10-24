@@ -44,10 +44,10 @@
 											<th class="wd-15p">INE</th>
 											<th class="wd-15p">Nom</th>
 											<th class="wd-15p">Prénom</th>
-											<th class="wd-15p">Date de naissance</th>
-											<th class="wd-15p">Lieu de naissance</th>
 											<th class="wd-15p">Sexe</th>
 											<th class="wd-15p">Classe</th>
+											<th class="wd-15p">Date de naissance</th>
+											<th class="wd-15p">Lieu de naissance</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -71,22 +71,23 @@
 											</td>
 											<td>
 												{{
-													$eleve->date_naissance
-												}}
-											</td>
-											<td>
-												{{
-													$eleve->lieu_naissance
-												}}
-											</td>
-											<td>
-												{{
 													$eleve->sexe
 												}}
 											</td>
 											<td>
 												{{
 													$eleve->classe->nom
+												}}
+											</td>
+
+											<td>
+												{{
+													$eleve->date_naissance
+												}}
+											</td>
+											<td>
+												{{
+													$eleve->lieu_naissance
 												}}
 											</td>
 

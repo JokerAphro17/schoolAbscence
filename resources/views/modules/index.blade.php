@@ -37,6 +37,7 @@
 										<tr>
 											<th class="wd-15p">Code du module</th>
 											<th class="wd-15p">Nom du module</th>
+											<th class="wd-15p">Nombres d'heures</th>
 											<th class="wd-15p">Action</th>
 										</tr>
 									</thead>
@@ -52,6 +53,11 @@
 											<td>
 												{{
 													$module->nom
+												}}
+											</td>
+											<td>
+												{{
+													$module->nombre_heures
 												}}
 											</td>
 											<td>

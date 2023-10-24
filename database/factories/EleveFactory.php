@@ -18,7 +18,7 @@ class EleveFactory extends Factory
             "nom" =>$this->faker->lastName(),
             "prenom" =>$this->faker->firstName(),
             "date_naissance" =>$this->faker->date(),
-            "lieu_naissance" =>$this->faker->text(),
+            "lieu_naissance" =>$this->faker->word,
             "sexe" =>$this->faker->randomElement([
                 "Masculin",
                 "Feminin",

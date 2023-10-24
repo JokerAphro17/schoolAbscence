@@ -51,7 +51,7 @@
                 </span>
             </div>
             <div class="text-right pt-1">
-                <p class="mb-0"><a href="{{url('/' . $page='forgot-password')}}" class="text-primary ml-1">Forgot Password?</a></p>
+                <p class="mb-0"><a href="{{url('/' . $page='forgot-password')}}" class="text-primary ml-1">Mot de passe oublié?</a></p>
             </div>
             <div class="container-login100-form-btn" type="submit">
                 <button 
@@ -61,16 +61,7 @@
             </button>
         </div>
         <div class="text-center pt-3">
-                <p class="text-dark mb-0">Not a member?<a href="{{url('/' . $page='register')}}" class="text-primary ml-1">Sign UP now</a></p>
-            </div>
-            <div class=" flex-c-m text-center mt-3">
-                <p>Or</p>
-                <div class="social-icons">
-                    <ul>
-                        <li><a class="btn  btn-social btn-block btn-google"><i class="fa fa-google-plus"></i> Sign up with Google</a></li>
-                        <li><a class="btn  btn-social btn-block btn-facebook mt-2"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
-                    </ul>
-                </div>
+                <p class="text-dark mb-0">Not a member?<a href="{{url('/' . $page='register')}}" class="text-primary ml-1">S'incrire</a></p>
             </div>
         </form>
     </div>
