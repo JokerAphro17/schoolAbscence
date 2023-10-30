@@ -47,7 +47,10 @@
 								<dt class="col-sm-3">Filiere :</dt>
 								<dd class="col-sm-9">{{$classe->filiere->nom}}</dd>
 								<dt class="col-sm-3">Nb d'eleves:</dt>
-								<dd class="col-sm-9">{{$classe->eleves->count()}}</dd>
+								<dd class="col-sm-9">{{$classe->eleves->count()}}
+								 <a href="{{route('eleves.index', ['classe_id' => $classe->id])}}" class="btn btn-primary btn-sm">
+									Voir les élèves</a>
+								</dd>
 							</dl>
 						</div>						
 					</div>
@@ -123,7 +126,7 @@
 										>
 											<thead>
 												<tr
-													
+													>
 													<th>INE</th>
 													<th>Nom</th>
 													<th>Prénom</th>

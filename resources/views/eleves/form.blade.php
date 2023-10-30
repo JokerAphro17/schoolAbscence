@@ -4,7 +4,8 @@
 			<div class="page-header">
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
-						<a href="{{route('eleves.index')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						<a href="{{route('eleves.index', 
+                        ['classe_id' => $classe_id])}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
 								<i class="fe fe-arrow-left">
                                 </i>
@@ -26,7 +27,7 @@
                                 @if(isset($eleve))
                                     Modifier l'élève
                                 @else
-                                    Nouvel élève
+                                    Nouvel élève de la classe {{App\Models\Classe::find($classe_id)->nom}}
                                 @endif
                             </h3>
                         </div>
@@ -98,18 +99,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-                                                <div class="form-group
-                                                ">
-                                                    <label class="form-label
-                                                    ">
-                                                        Classe
-                                                    </label>
-                                                    <select name="classe_id" class="form-control">
-                                                        @foreach($classes as $classe)
-                                                            <option value="{{$classe->id}}" @if(isset($eleve) && $eleve->classe_id == $classe->id) selected @endif>{{$classe->nom}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                               <input type="hidden" name="classe_id" value="{{$eleve->classe_id ?? $classe_id}}">
                                             </div>
                                         </div>
 
@@ -144,7 +134,9 @@
                                             </div>
                                             <div class=" d-flex  justify-content-right ">
                                                 <a
-                                                href="{{route('eleves.index')}}"
+                                                href="{{route('eleves.index', 
+                                                ['classe_id' => $classe_id])}}"
+
                                                 class="btn btn-outline-danger">Annuler</a>
                                             </div>
                                         </div>
@@ -157,7 +149,7 @@
                 </div>
             </div>
 
-            // show all errors
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

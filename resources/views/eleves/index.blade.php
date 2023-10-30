@@ -4,19 +4,35 @@
 			<div class="page-header">
 				<div class="ml-auto pageheader-btn">
 					<div class="btn-list">
-						<a href="{{route('eleves.create')}}" class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
+						<a href="{{route('eleves.create', ['classe_id' => $classe_id])}}"
+						
+						class="btn btn-primary btn-icon text-white" data-toggle="tooltip" title="Add order" data-placement="top">
 							<span>
 								<i class="fe fe-plus">
                                 </i>
                                 Nouvel élève
 							</span>
 						</a>
-						<a href="#"  id="excel" class="btn btn-orange btn-icon text-white" data-toggle="tooltip" title="Download" data-placement="top">
-							<span>
-								<i class="fe fe-excel"></i>	
-								Importer une liste
+						<a href="#"  id="excel" class="btn btn-success btn-icon text-white" data-toggle="tooltip" title="Download" data-placement="top">
+							<span  >
+								importer des élèves
 							</span>
+							
 						</a>
+						<a class="" data-toggle="tooltip" title="Download" data-placement="top">
+							<form action="{{route('eleves.import')}}" method="POST" enctype="multipart/form-data" id="import">
+								@csrf
+								<input type="file" name="file" id="file" style="display: none">
+								<input type="hidden" name="classe_id" value="{{$classe_id}}">
+								<button type="submit"  id="submit" class="btn btn-success btn-icon text-white" style="display: none" data-toggle="tooltip" title="Download" data-placement="top">
+									<span>
+										
+										Valider
+									</span>
+								</button>
+							</form>
+						</a>
+						
 					</div>
 				</div>
 			</div>
@@ -31,16 +47,16 @@
 							<h3 class="card-title">Les eleves</h3>
 						</div>
 						<div class="card-body">
-						   
+						  
 							@if($eleves->count() == 0)
 								<h5 class="text-muted text-center">
 									Aucun eleve trouvé
 								</h5>
 							@else
 							<div class="table-responsive">
-								<table id="data-table1" class="table table-striped table-bordered text-nowrap w-100">
+								<table id="table" class="table table-striped table-bordered text-nowrap w-100">
 									<thead>
-										<tr>
+										<tr><th class="wd-15p">N*</th>
 											<th class="wd-15p">INE</th>
 											<th class="wd-15p">Nom</th>
 											<th class="wd-15p">Prénom</th>
@@ -52,8 +68,13 @@
 									</thead>
 									<tbody>
 										
-										@foreach ($eleves as $eleve )
+										@foreach ($eleves as $key => $eleve )
 										<tr>
+											<td>
+												{{
+													$key + 1
+												}}
+											</td>
 											<td>
 												{{
 													$eleve->ine
@@ -82,7 +103,7 @@
 
 											<td>
 												{{
-													$eleve->date_naissance
+													Carbon\Carbon::parse($eleve->date_naissance)->format('d/m/Y')
 												}}
 											</td>
 											<td>
@@ -119,6 +140,9 @@
 			
 			<div class="row justify-content-end">
 			 <div class="col-4">
+				{{
+					$eleves->links()
+				}}
 			 </div>
 
 		    </div>
@@ -144,42 +168,45 @@
 			$(document).ready(function() {
 				$('#excel').click(function() {
 					// create a file input and click on it
-					var excel = document.createElement("input");
-					excel.type = "file";
-					excel.accept = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel";
+					var excel = document.getElementById("file");
 					excel.click();
-					// listen to the file upload change event and get the file
-					excel.addEventListener("change", function() {
-						var file = excel.files[0];
-						if (file) {
-							// send the file to the server via XHR and FormData
-							var formData = new FormData();
-							formData.append("file", file);
-							formData.append("_token", "{{ csrf_token() }}");
-							fetch("{{ route('eleves.import') }}", {
-								method: "POST",
-								body: formData
-							}).then(response => {
-								if (response.ok) {
-									return response.json();
-								} else {
-									return Promise.reject("something went wrong!");
-								}
-							}).then(data => {
-								console.log(data);
-								if (data.success) {
-									alert(data.success);
-									window.location.reload();
-								} else if (data.error) {
-									alert(data.error);
-								}
-							}).catch(error => {
-								console.error(error);
-							});
-						}
-					});
+
+
+				});
+
+				$('#file').change(function() {
+					
+					if($('#file').val() != '') {
+						$('#submit').css('display', 'block');
+						$('#excel').css('display', 'none');
+					}
+					else {
+						$('#submit').css('display', 'none');
+						$('#excel').css('display', 'block');
+					}
+
 				});
 			});
 
+		</script>
+		<script>
+			$(document).ready(function() {
+				$('#d').DataTable({d
+					"language": {
+						"lengthMenu": "Afficher _MENU_ enregistrements par page",
+						"zeroRecords": "Aucun enregistrement trouvé",
+						"info": "Affichage de la page _PAGE_ sur _PAGES_",
+						"infoEmpty": "Aucun enregistrement disponible",
+						"infoFiltered": "(filtré à partir de _MAX_ enregistrements au total)",
+						"search": "Rechercher",
+						"paginate": {
+							"first": "Premier",
+							"last": "Dernier",d
+							"next": "Suivant",
+							"previous": "Précédent"d
+						},
+					}
+				});
+			});
 		</script>
 @endsection 
