@@ -146,6 +146,7 @@ class EleveController extends Controller
             Alert::error('error', 'Aucune donnée trouvée.');
             return redirect()->route('eleves.index', ['classe_id' => $request->classe_id]);
         }
+        
        
         foreach ($rows as $key => $value) {
             if ($key > 0) {
@@ -177,9 +178,10 @@ class EleveController extends Controller
             }
         }
 
+
 foreach ($data as $key => $value) {
     $eleve = Eleve::where('ine', $value['ine'])->first();
-    if ($eleve || isNan($value[0])) {
+    if ($eleve) {
         unset($data[$key]);
     }
 }
@@ -190,7 +192,7 @@ foreach ($data as $key => $value) {
         }
 
         
-        dd($data);
+    
         foreach ($data as $key => $value) {
             Eleve::create($value);
         }

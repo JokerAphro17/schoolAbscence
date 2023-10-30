@@ -103,7 +103,7 @@
 
 											<td>
 												{{
-													Carbon\Carbon::parse($eleve->date_naissance)->format('d/m/Y')
+													$eleve->date_naissance
 												}}
 											</td>
 											<td>
